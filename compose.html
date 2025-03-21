@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gmail Compose UI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,13 +15,13 @@
         }
 
         body {
-            background: #000;
+            /* background: #000; */
+            background-image: linear-gradient(rgb(32, 32, 32), rgb(121, 116, 116));
             color: #fff;
             font-size: 16px;
             line-height: 1.5;
         }
 
-        /* Header */
         .header {
             background: #202124;
             padding: 10px 15px;
@@ -50,10 +52,13 @@
             font-size: 24px;
             cursor: pointer;
         }
-        .header .send-btn, .header .more-btn, .header .attach-btn  {
+
+        .header .send-btn,
+        .header .more-btn,
+        .header .attach-btn {
             font-size: 20px;
         }
-        /* Main Container */
+
         .container {
             margin-top: 60px;
             padding: 15px;
@@ -61,7 +66,6 @@
             min-height: calc(100vh - 60px);
         }
 
-        /* Form Fields */
         .form-field {
             border-bottom: 1px solid #5f6368;
             padding: 10px 0;
@@ -107,42 +111,26 @@
             outline: none;
             resize: none;
         }
-
-        @media (max-width: 480px) {
-            body {
-                font-size: 14px;
-            }
-
-            .form-field input,
-            .form-field textarea {
-                font-size: 12px;
-            }
-
-            .form-field label {
-                font-size: 12px;
-            }
-
-            .header .right {
-                gap: 15px;
-            }
-        }
     </style>
 </head>
+
 <body>
     <div class="header">
         <div class="left">
-            <span class="back-btn" onclick="window.location.href='email.html'" title="back">&larr;</span>
+            <span class="back-btn" onclick="window.location.href='email.html'" title="back"><i
+                    class="fa-solid fa-arrow-left"></i></span>
         </div>
         <div class="right">
             <span class="attach-btn">
-                <label for="file-upload" style="cursor: pointer;" title="File">&#128206;</label>
+                <label for="file-upload" style="cursor: pointer;" title="Attach file"><i
+                        class="fa-solid fa-paperclip"></i></label>
                 <input type="file" id="file-upload" style="display: none;">
-            </span>            
+            </span>
             <span class="send-btn">
                 <label for="sender" style="cursor: pointer;" title="Send">&#10148;</label>
                 <input type="submit" id="sender" style="display: none;" onclick="alert('Mail sended successfully...')">
             </span>
-            <span class="more-btn" title="More">&#8942;</span>
+            <span class="more-btn" title="More"><i class="fa-solid fa-ellipsis-vertical"></i></span>
         </div>
     </div>
 
@@ -150,12 +138,12 @@
         <div class="form-field">
             <label for="from">From</label>
             <input type="email" id="from" name="from" required>
-            <span class="arrow">&#9660;</span>
+            <span class="arrow"><i class="fa-solid fa-angle-down"></i> </span>
         </div>
         <div class="form-field">
             <label for="to">To</label>
             <input type="email" id="to" name="to" required>
-            <span class="arrow">&#9660;</span>
+            <span class="arrow"><i class="fa-solid fa-angle-down"></i> </span>
         </div>
         <div class="form-field">
             <label for="subject">Subject</label>
@@ -166,4 +154,5 @@
         </div>
     </div>
 </body>
+
 </html>
