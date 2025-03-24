@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Upload</title>
+</head>
+<body>
+    <svg>
+        <rect x="10" y="10" width="100" height="70" stroke="black" stroke-width="3px" fill="blue" ></rect>
+    </svg>
+    <canvas id="myCanvas" width="300px" height="200px" style="border: 1px solid black;"></canvas>
+</body>
+<script>
+    let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.moveTo(30, 130);  // Start point (bottom-left)
+        ctx.lineTo(130, 20);  // Top point
+        ctx.lineTo(230, 130); // Bottom-right
+        ctx.closePath();      // Connect back to start point
+        ctx.fillStyle = "blue"; // Fill color
+        ctx.fill(); // Fill the triangle
+</script>
+</html>

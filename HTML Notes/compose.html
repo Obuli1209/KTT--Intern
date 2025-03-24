@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Compose UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Header */
+        .header {
+            background: #202124;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+        }
+
+        .header .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header .back-btn,
+        .header .send-btn,
+        .header .more-btn,
+        .header .attach-btn {
+            color: #8ab4f8;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .header .send-btn, .header .more-btn, .header .attach-btn  {
+            font-size: 20px;
+        }
+        /* Main Container */
+        .container {
+            margin-top: 60px;
+            padding: 15px;
+            background: #202124;
+            min-height: calc(100vh - 60px);
+        }
+
+        /* Form Fields */
+        .form-field {
+            border-bottom: 1px solid #5f6368;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .form-field label {
+            color: #8ab4f8;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            flex: 1;
+            outline: none;
+            resize: none;
+        }
+
+        .form-field .arrow {
+            color: #5f6368;
+            font-size: 16px;
+        }
+
+        .email-body {
+            margin-top: 20px;
+        }
+
+        .email-body textarea {
+            /* border: 1px solid white; */
+            width: 100%;
+            height: 200px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="left">
+            <span class="back-btn" onclick="window.location.href='email.html'" title="back">&larr;</span>
+        </div>
+        <div class="right">
+            <span class="attach-btn">
+                <label for="file-upload" style="cursor: pointer;" title="Attach file">&#128206;</label>
+                <input type="file" id="file-upload" style="display: none;">
+            </span>            
+            <span class="send-btn">
+                <label for="sender" style="cursor: pointer;" title="Send">&#10148;</label>
+                <input type="submit" id="sender" style="display: none;" onclick="alert('Mail sended successfully...')">
+            </span>
+            <span class="more-btn" title="More">&#8942;</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-field">
+            <label for="from">From</label>
+            <input type="email" id="from" name="from" required>
+            <span class="arrow">&#9660;</span>
+        </div>
+        <div class="form-field">
+            <label for="to">To</label>
+            <input type="email" id="to" name="to" required>
+            <span class="arrow">&#9660;</span>
+        </div>
+        <div class="form-field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+        </div>
+        <div class="email-body">
+            <textarea placeholder="Compose email" required></textarea>
+        </div>
+    </div>
+</body>
+</html>

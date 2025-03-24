@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Gmail UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #202124;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Header */
+        .header {
+            background: #202124;
+            padding: 10px 15px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .search-container {
+            background: #5f6368;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+        }
+
+        .hamburger {
+            font-size: 24px;
+            margin: 0 15px;
+            cursor: pointer;
+            color: #d9dcdf;
+        }
+
+        .search {
+            flex: 1;
+        }
+
+        .search input {
+            width: 100%;
+            border: none;
+            background: none;
+            padding: 8px;
+            font-size: 16px;
+            outline: none;
+            color: white;
+        }
+
+        .search input::placeholder {
+            color: #b8bbbe;
+        }
+
+        .profile {
+            width: 30px;
+            height: 30px;
+            background: #dadce0;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* Main Container */
+        .container {
+            margin-top: 60px;
+            padding: 10px;
+        }
+
+        /* Email List */
+        .email-list {
+            background: #202124;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .email-item {
+            padding: 15px;
+            border-bottom: 1px solid #f1f1f1;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* .email-item.unread {
+            background:  #202124;
+            font-weight: bold;
+        } */
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: #dadce0;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .email-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .sender {
+            color: white;
+        }
+
+        .subject {
+            color: #5f6368;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .time {
+            color: #5f6368;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        /* Compose Button */
+        .compose-btn {
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background: rgb(14, 14, 145);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+            cursor: pointer;
+        }
+        footer{
+            background: #5f6368;
+            position: fixed;
+            width: 100%;
+            height: 50px;
+            bottom: 0;
+            color: white;
+        }
+        /* .footer_container{
+            text-align: center;
+        } */
+        .message, .video{
+            font-size: 40px;
+            justify-content: space-between;
+            margin:0 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="search-container">
+            <span class="hamburger">&#9776;</span>
+            <span class="search"><input type="search" placeholder="Search in mail"></span>
+                <div class="profile"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="email-list">
+            <div class="email-item unread">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2721 created by Sugumar M</div>
+                </div>
+                <span class="time">9:45 AM</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2700 created by Anilraj M I</div>
+                </div>
+                <span class="time">9:00 AM</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2697 created by Kishore P</div>
+                </div>
+                <span class="time">Yesterday</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2694 created by Saravanan M</div>
+                </div>
+                <span class="time">Mar 19</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2683 created by Sabarinathan P</div>
+                </div>
+                <span class="time">Mar 19</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2684 created by Sanjay santhosh</div>
+                </div>
+                <span class="time">Mar 18</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2679 created by Kaviya S</div>
+                </div>
+                <span class="time">Mar 18</span>
+            </div>
+            <div class="email-item unread">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2725 created by Sugumar M</div>
+                </div>
+                <span class="time">Mar 17</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2708 created by Anilraj M I</div>
+                </div>
+                <span class="time">Mar 17</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2693 created by Kishore P</div>
+                </div>
+                <span class="time">Mar 16</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2684 created by Saravanan M</div>
+                </div>
+                <span class="time">Mar 16</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2680 created by Sabarinathan P</div>
+                </div>
+                <span class="time">Mar 15</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2676 created by Sanjay santhosh</div>
+                </div>
+                <span class="time">Mar 15</span>
+            </div>
+            <div class="email-item">
+                <div class="avatar"></div>
+                <div class="email-content">
+                    <div class="sender">KT Telematic</div>
+                    <div class="subject">New Ticket #2672 created by Kaviya S</div>
+                </div>
+                <span class="time">Mar 14</span>
+            </div>
+        </div>
+    </div>
+
+    <button class="compose-btn" onclick="window.location.href='compose.html'">
+        <pre>&#128394;   Compose</pre>
+    </button>
+<footer>
+ <div class="footer_container">
+    <span class="message">&#9993;</span>
+    <span class="video">&#128249;</span>
+ </div>
+</footer>
+</body>
+</html>

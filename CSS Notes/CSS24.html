@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+    <style>
+        /* Basic Selectors */
+        /* Universal Selector */
+        * { color: darkblue; }
+        /* Element Selector */ 
+        p { font-weight: bold; }
+        /* Class Selector */
+        .class-selector { color: green; } 
+        /* ID Selector */
+        #id-selector { color: red; } 
+        
+        /* Combinator Selectors */
+        /* Descendant Selector */
+        div p { color: orange; } 
+         /* Child Selector */
+        div > p { color: purple; }
+        /* Adjacent Sibling Selector */
+        h1 + p { color: brown; }
+        /* General Sibling Selector */ 
+        h1 ~ p { color: teal; } 
+        
+        /* Attribute Selectors */
+        /* Presence Selector */
+        [type] { border: 2px solid black; } 
+        /* Attribute Value Selector */
+        [type="text"] { background-color: lightgray; } 
+        /* Substring Matching Selector */
+        [type^="pass"] { color: blue; } 
+        /* Wildcard Selector */
+        [type*="word"] { font-style: italic; } 
+        
+        /* Pseudo-classes */
+        /* Hover */
+        a:hover { color: red; } 
+        /* Focus */
+        input:focus { background-color: yellow; }
+        /* First-child */ 
+        li:first-child { color: blueviolet; } 
+         /* Last-child */
+        li:last-child { color: orange; }
+        /* Not Selector */
+        li:not(.exclude) { font-weight: bold; } 
+        
+        /* Pseudo-elements */
+         /* Before */
+        p::before { content: "[Before] "; color: gray; }
+        /* After */
+        p::after { content: " [After]"; color: gray; }
+        /* First-line */ 
+        p::first-line { font-variant: small-caps; } 
+        /* First-letter */
+        p::first-letter { font-size: 2em; color: red; } 
+        /* Placeholder */
+        ::placeholder { color: darkgray; font-style: italic; } 
+    </style>
+</head>
+<body>
+    <h1>CSS Selectors</h1>
+    
+    <h2>Basic Selectors</h2>
+    <p class="class-selector">This is a class selector example.</p>
+    <p id="id-selector">This is an ID selector example.</p>
+    <br><hr>
+    
+    <h2>Combinator Selectors</h2>
+    <div>
+        <p>This is a descendant selector.</p>
+        <p>This is a child selector.</p>
+    </div>
+    <h1>Heading</h1>
+    <p>This is an adjacent sibling selector.</p>
+    <p>This is a general sibling selector.</p><br><hr>
+    
+    <h2>Attribute Selectors</h2>
+    <input type="text" placeholder="Text input">
+    <input type="password" placeholder="Password input">
+    <input type="keyword" placeholder="Keyword input"><br><hr>
+    
+    <h2>Pseudo-classes</h2>
+    <a href="#">Hover over this link</a>
+    <input type="text" placeholder="Focus on this input">
+    <ul>
+        <li>First child</li>
+        <li class="exclude">Middle child (excluded)</li>
+        <li>Last child</li>
+    </ul>
+    <br><hr>
+    <h2>Pseudo-elements</h2>
+    <p>This paragraph demonstrates ::before, ::after, ::first-line, and ::first-letter.</p><br><hr>
+</body>
+</html>

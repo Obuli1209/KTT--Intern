@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT-Intern Training</title>
+</head>
+
+<body>
+    <h1>KT-Intern 17.03.2025</h1>
+    <!-- iframe tag -->
+    <h1>iframe</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/aRGdDy18qfY?si=pUcI1iGu_N7E7Kty"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <br>
+    <!-- HTML javascript tag -->
+    <h1>HTML javascript</h1>
+    <button onclick="show()">click me to show date and time </button>
+    <p id="dateTime"></p>
+    <script>
+        function show() {
+            document.getElementById("dateTime").innerHTML = Date();
+        }
+    </script>
+    <noscript>Sorry, your browser does not support JavaScript!</noscript>
+    <!-- HTML filepath -->
+    <h1>HTML filepath</h1>
+    <p>Filepath is describe the location of a file in website.</p>
+    <ol>
+        <li>Absolute file</li>
+        <p>Absolute file means to provide the full URL link.</p>
+        <p>Ex: www.google.com, www.w3schools.com</p>
+        <li>Relative file</li>
+        <p>Relative file means provide the filepath in the current folder.</p>
+        <p>Ex: /images/image1.jpg, image2.png</p>
+    </ol>
+    <!-- HTML Head -->
+    <h1>HTML head</h1>
+    <p>HTML Head element is a container for metadata.</p>
+    <p>Metadata typically define the characterset, styles, scripts, title, and other metadata</p>
+
+    <!-- HTML layout -->
+    <h1>HTML Layout</h1>
+    <p>It display content in multiple colums like magazines.</p>
+    <ol>
+        <p>Four techniques are used</p>
+        <li>CSS Framework</li>
+        <li>CSS float property</li>
+        <li>CSS flexbox</li>
+        <li>CSS grid</li>
+    </ol>
+
+    <!-- HTML kbd-keyboard input -->
+    <h1>HTML kbd</h1>
+    <kbd>Monospace content.</kbd>
+
+    <!-- HTML Style Guide -->
+    <h1>HTML style guide</h1>
+    <p>It is a set of rules and conventions</p>
+    <p>It defines the how to write and format code.</p>
+
+    <!-- HTML Entities and HTML Symbols and HTML Emojis-->
+    <h1>HTML Entities and HTML Symbols and HTML Emojis</h1>
+    <p>Entities, Symbols and Emojis are special codes.</p>
+    <p>special characters are not in standard keybaord. and also used in represent characters.</p>
+    <p>EX:</p>
+    <ol>
+        <li>Copyright symbol: &copy;</li>
+        <li>Resgistered trademark: &reg;</li>
+        <li>Trademark symbol: &trade;</li>
+        <li>Lessthen symbol: &lt;</li>
+        <li>Left arrow: &larr;</li>
+        <li>Up arrow: &uarr;</li>
+        <li>Spades: &spades;</li>
+        <li>Clubs: &clubs;</li>
+        <li>Hearts: &hearts;</li>
+        <li>Diamond: &diam;</li>
+        <li>&#128512;</li>
+        <li>&#128513;</li>
+    </ol>
+
+    <!-- HTML charset -->
+    <h1>HTML charset</h1>
+    <p>To display the HTML page correctly and including the entities, symbols and emojis.</p>
+
+    <!-- HTML URL encode -->
+    <h1> HTML URL encode</h1>
+    <ol>
+        <li>URL convert character into ASCII-set transmetted thorught internet for safety.</li>
+        <li>URL encoding normally replaces a space with a plus (+) sign, or %20.</li>
+    </ol>
+
+    <!-- HTML Forms -->
+    <h1>HTML Forms</h1>
+    <p>HTML form is used to collect the user input data.</p>
+    <p>input elements for type attribute.</p>
+    <ol>
+        <li>type="text"</li>
+        <li>type="radio"</li>
+        <li>type="checkbox"</li>
+        <li>type="submit"</li>
+        <li>type="button"</li>
+        <li>type="range"</li>
+    </ol>
+
+    <!-- HTML form attributes -->
+    <h1>HTML form attributes</h1>
+    <ol>
+        <li>action- if click submit button, the data send with respective database.</li>
+        <form action="">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" value="Doe"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <li>target-used for opening tabs</li>
+        <ol>
+            <li>_blank- open in new tab</li>
+            <li>_slef- open in same tab</li>
+            <li>_parent- open in parent tab</li>
+            <li>_top- open in full body in window</li>
+        </ol>
+        <li>method- how to send data to server</li>
+        <ol>
+            <li>get- use get method, it shows user data in url and not secure. it append like query string.size is 2048
+                characters.</li>
+            <li>post- it convert form data into json and add with http body and send.</li>
+        </ol>
+        <li>autocomplete- it shows old history.</li>
+        <li>novalidate- it used this doesnot validated the form </li>
+    </ol>
+
+    <!-- HTML Form Elements -->
+    <h1>HTML Form Elements</h1>
+    <ul>
+        <li>input</li>
+        <label for="fname">First name: </label>
+        <input type="text" id="fname">
+        <li>label</li>
+        <li>select</li>
+        <label for="cars">Choose a car:</label>
+        <select id="cars" name="cars">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="fiat">Fiat</option>
+            <option value="audi">Audi</option>
+        </select>
+        <li>textarea</li>
+        <textarea name="message" id="" rows="10" cols="20"></textarea>
+        <li>button</li>
+        <button type="button" onclick="alert('Hello World!')">Click Me!</button>
+        <li>fieldset</li>
+        <li>legend</li>
+        <form action="">
+            <fieldset style="border: 1px solid black;">
+                <legend>Personalia:</legend>
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" value="John"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" value="Doe"><br><br>
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+        <li>datalist</li>
+        <form action="">
+            <input list="laptops">
+            <datalist id="laptops">
+                <option value="hp">
+                <option value="dell">
+                <option value="lenovo">
+                <option value="asus">
+            </datalist>
+        </form>
+    </ul>
+
+    <!-- HTML Input Types -->
+    <h1>HTML Input Types</h1>
+    <p>Ex: </p>
+    <ul>
+        <li>submit</li>
+        <input type="submit">
+        <li>reset</li>
+        <input type="reset">
+        <li>button</li>
+        <button>click me</button>
+        <li>text</li>
+        <input type="text" placeholder="First Name">
+        <li>number</li>
+        <input type="number" min="0" max="10">
+        <li>range</li>
+        <input type="range" min="0" max="100">
+
+        <li>radio</li>
+        <input type="radio" id="HP" value="hp" name="laptops">
+        <label for="HP">HP</label>
+        <input type="radio" id="DELL" value="dell" name="laptops">
+        <label for="DELL">DELL</label>
+        <input type="radio" id="LENOVO" value="lenovo" name="laptops">
+        <label for="LENOVO">LENOVO</label>
+
+        <li>checkbox</li>
+        <input type="checkbox" id="laptops">
+        <label for="laptops">HP</label>
+        <input type="checkbox" id="laptops">
+        <label for="laptops">DELL</label>
+        <input type="checkbox" id="laptops">
+        <label for="laptops">LENOVO</label>
+        <li>date</li>
+        <input type="date">
+        <li>url</li>
+        <input type="url">
+        <li>email</li>
+        <input type="email" required>
+        <li>password</li>
+        <input type="password" required>
+        <li>file</li>
+        <input type="file" name="" id="">
+        <li>search</li>
+        <input type="search">
+    </ul>
+    <!-- HTML Input Attributes -->
+
+    <h1>HTML Input Attributes</h1>
+    <ul>
+        <li>value</li>
+        <input type="text" value="John">
+        <li>placeholder</li>
+        <input type="text" placeholder="FirstName">
+        <li>autofocus</li>
+        <input type="text" placeholder="FirstName" autofocus>
+        <li>step</li>
+        <input type="number" min="0" max="40" step="4">
+        <li>disabled</li>
+        <input type="text" value="John" disabled>
+        <li>required</li>
+        <input type="email" required>
+        <li>min and max</li>
+        <input type="number" min="0" max="10">
+        <li>size</li>
+        <input type="password" size="7">
+        <li>readonly</li>
+        <input type="text" value="John" readonly>
+    </ul>
+
+
+</body>
+
+</html>
