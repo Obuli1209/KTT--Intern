@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT Training 25.03.2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .simple-border {
+            border: 2px solid black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dotted {
+            border-style: dotted;
+        }
+
+        .dashed {
+            border-style: dashed;
+        }
+
+        .solid {
+            border-style: solid;
+        }
+
+        .double {
+            border-style: double;
+        }
+
+        .border_radius {
+            border-style: solid;
+            background: aquamarine;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .margin_style {
+            margin: 20px 100px;
+            border-style: solid;
+        }
+
+        .margin_auto {
+            margin: auto;
+            width: 100%;
+            border-style: solid;
+            text-align: center;
+        }
+
+        .parent {
+            margin: 20px;
+            border-style: solid;
+        }
+
+        .child {
+            margin: inherit;
+            border: 1px solid black;
+        }
+
+        .hei_wid {
+            border-style: solid;
+            width: 100%;
+            height: 70px;
+        }
+
+        .Max-width {
+            max-width: 800px;
+            border-style: solid;
+        }
+
+        .Min-width {
+            min-width: 700px;
+            border-style: solid;
+        }
+
+        .Max-height {
+            max-height: 100px;
+            border-style: solid;
+        }
+
+        .Min-height {
+            min-height: 50px;
+            border-style: solid;
+            /* height: 10px; */
+        }
+
+        .Outline {
+            border: 2px solid black;
+            width: 100%;
+            height: 20px;
+            /* outline-color: blue;
+            outline-width: 5px;
+            outline-offset: 20px;
+            outline-style: dotted; */
+            outline: 5px blueviolet dashed;
+            outline-offset: 5px;
+        }
+
+        .fonts {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 32px;
+            font-weight: bold;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .icons {
+            color: blueviolet;
+            font-size: 32px;
+            /* animation: bounce 3s infinite ease-in-out; */
+        }
+
+        .links p {
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .links a:link {
+            color: red;
+        }
+
+        .links a:hover {
+            color: blue;
+        }
+
+        .links a:visited {
+            color: blueviolet;
+        }
+
+        .links a:active {
+            color: greenyellow;
+        }
+
+        .dis_block {
+            height: 100px;
+            width: 200px;
+            background: #008080;
+            display: block;
+            margin: 5px;
+            border: 2px solid black;
+            color: white;
+        }
+
+        .in {
+            height: 100px;
+            width: 200px;
+            background: #008080;
+            display: inline;
+            margin: 5px;
+            border: 2px solid black;
+            color: white;
+            padding: 5px;
+
+        }
+
+        .in_block {
+            height: 100px;
+            width: 200px;
+            background: #008080;
+            display: inline-block;
+            margin: 10px;
+            border: 2px solid black;
+            color: white;
+        }
+
+        .st1,
+        .st2 {
+            position: static;
+            border-style: solid;
+            background: green;
+            width: 100px;
+            height: 100px;
+        }
+
+        .re1 {
+            position: relative;
+            border-style: solid;
+            background: #adff2f;
+            width: 100px;
+            height: 100px;
+            left: 400px;
+        }
+
+        .ab1 {
+            position: absolute;
+            border-style: solid;
+            background: #ffce2f;
+            width: 100px;
+            height: 100px;
+            right: 0;
+            /* top: 20px; */
+        }
+
+        .fix1 {
+            position: fixed;
+            border-style: solid;
+            background: #ff2fff;
+            width: 100px;
+            height: 100px;
+            right: 0;
+            bottom: 20px;
+        }
+
+        .sti1 {
+            position: sticky;
+            border-style: solid;
+            background: #2f55ff;
+            width: 100px;
+            height: 100px;
+            bottom: 0;
+        }
+
+        .pos {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #008080;
+            border-style: solid;
+        }
+
+        .rel {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: #d6d7dd;
+            border-style: solid;
+            top: 20px;
+            left: 30px;
+        }
+
+        .ov {
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            overflow: visible;
+        }
+
+        .oh {
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .os {
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+            overflow: scroll;
+        }
+
+        .flb,
+        .frb {
+            border: 2px solid black;
+            width: 100%;
+            height: 200px;
+        }
+
+        .fl {
+            float: left;
+            margin: 0;
+        }
+
+        .fr {
+            float: right;
+            margin: 0;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        .flex-item {
+            background-color: #4CAF50;
+            color: white;
+            margin: 5px;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+        }
+        .container {
+            display: flex;
+            width: 700px;
+            background-color: #d3d3d3;
+        }
+
+        .container div{
+            background-color: #6495ed;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .grow {
+            flex-grow: 2;
+        }
+        .container2 {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            background-color: #d3d3d3;
+        }
+        .container2 div{
+            background-color: #6495ed;
+            margin: 20px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        .trans{
+            width: 200px;
+            height: 200px;
+            background: #4CAF50;
+            transition-property: width ;
+            transition-duration: 0.5s ;
+            transition-timing-function: ease-in-out;
+            transition: width 2s, height 2s;
+        }
+        .trans:hover{
+            width: 500px;
+            background:#2f55ff;
+            height: 240px;
+        }
+        .anime{
+            width: 300px;
+            height: 300px;
+            background-color: #0000ff;
+            animation: changeColor 3s infinite;
+        }
+        @keyframes changeColor{
+            from{background-color: #0000ff;}
+            to{background-color: #ff2fff;}
+        }
+        .mr{
+            width: 200px;
+            height: 200px;
+            background-color: #0000ff;
+            animation: move 3s infinite ease-in-out;
+            animation-direction: alternate;
+        }
+        @keyframes move{
+            from{transform: translateX(0);}
+            to{transform: translateX(250px);}
+        }
+        .bounce{
+            width: 200px;
+            height: 200px;
+            background-color: #0000ff;
+            animation: bounce 3s infinite ease-in-out;
+        }
+        @keyframes bounce{
+            0%{transform:translateY(0);}
+            25%{transform:translateY(-25px);}
+            50%{transform:translateY(0px);}
+            75%{transform:translateY(-15px);}
+            100%{transform:translateY(0);}
+            
+        }
+        .rotate{
+            width: 200px;
+            height: 200px;
+            background-color: #0000ff;
+            animation: spin 4s linear infinite;
+            animation-play-state: paused;
+        }
+        .rotate:hover{
+            animation-play-state: running;
+            background-color: #ff2fff;
+        }
+        @keyframes spin{
+            from{transform: rotate(0deg);}
+            to{transform: rotate(-360deg);}
+        }
+        .zigzag{
+            position: relative;
+            animation: zigzag 6s linear infinite;
+            font-size: 15px;
+            font-weight: bold;
+            width: 200px;
+            margin: 50px;
+        }
+        @keyframes zigzag{
+            0%{transform:translateX(0) translateY(0);}
+            25%{transform:translateX(25vw) translateY(-30px);}
+            50%{transform:translateX(50vw) translateY(30px);}
+            75%{transform:translateX(75vw) translateY(-30px);}
+            100%{transform:translateX(calc(100vw-200px)) translateY(30px);}
+        }
+    </style>
+</head>
+
+<body>
+    <h1>KT Intern 25.03.2025</h1>
+    <h2>CSS Borders</h2>
+    <ul>
+        <li>
+            <h4>Simple border</h4>
+            <div class="simple-border">This div has a simple black border.</div><br>
+            <hr>
+        </li>
+        <li>
+            <h4>Border styles</h4>
+            <h5>Dotted border</h5>
+            <p class="dotted">A dotted border.</p>
+            <h5>Dashed border</h5>
+            <p class="dashed">A dashed border.</p>
+            <h5>Solid border</h5>
+            <p class="solid">A solid border.</p>
+            <h5>Double border</h5>
+            <p class="double">A double border.</p><br>
+            <hr>
+        </li>
+        <li>
+            <h4>Border radius</h4>
+            <p class="border_radius">Border radius Property</p>
+        </li><br>
+        <hr>
+        <li>
+            <h2>CSS Margins</h2>
+            <h5>Margin styles</h5>
+            <p class="margin_style">Margin property</p>
+            <h5>Margin Auto</h5>
+            <p class="margin_auto">margin auto</p>
+            <h5>Margin inherit</h5>
+            <div class="parent">
+                Parent Element
+                <div class="child"> Child inherits margin from parent. </div>
+            </div>
+        </li><br>
+        <hr>
+        <li>
+            <h2>CSS Height and Width</h2>
+            <h4>Heigth and width</h4>
+            <p class="hei_wid">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores sed voluptate veniam.
+                Eos deserunt quisquam fugiat porro hic aut temporibus officiis reiciendis! Repudiandae atque voluptatem
+                quos ratione perferendis deserunt harum blanditiis odit accusamus illo? Architecto quasi doloremque,
+                suscipit itaque eligendi explicabo modi quidem nulla ea, optio saepe et voluptate? Quasi.</p>
+            <h4>Max-width</h4>
+            <p class="Max-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae nobis labore alias
+                esse eaque dolores nemo. Doloremque minima aut quaerat commodi voluptatum odio esse corrupti, inventore
+                voluptas rerum impedit aliquam dolorem cupiditate, quisquam iusto. Esse cupiditate, in assumenda
+                architecto expedita debitis quo repellendus, optio voluptatum ea maxime. Ut, voluptate in!</p>
+            <h4>Min-width</h4>
+            <p class="Min-width">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate aliquam
+                accusamus delectus? Perferendis velit alias nam perspiciatis nesciunt aspernatur assumenda recusandae
+                error ratione expedita dolores illo veniam, quod nostrum cum consequatur doloremque maxime fugiat eius
+                quisquam delectus consequuntur odit! Similique quos atque ullam, et dolorem eligendi maxime eaque
+                deleniti.</p>
+            <h4>Max-height</h4>
+            <p class="Max-height">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quia sed voluptatem,
+                dolorum nisi accusamus illum tenetur ratione repudiandae?</p>
+            <h4>Min-height</h4>
+            <p class="Min-height">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi officia debitis ab!
+                Mollitia quasi delectus, libero pariatur ipsum temporibus. Voluptatem?</p>
+            <br>
+            <hr>
+        </li>
+        <li>
+            <h2>CSS Outline</h2>
+            <p class="Outline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, ut.</p>
+        </li><br>
+        <hr>
+        <li>
+            <h2>CSS Fonts</h2>
+            <p class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat dolore sapiente ut
+                molestias fugiat unde officia veniam aliquid corrupti similique.</p>
+        </li><br>
+        <hr>
+        <li>
+            <h2>CSS Icons</h2>
+            <h4>Fonawesome Icons</h4>
+            <div class="icons">
+                <i class="fa fa-cloud"></i>
+                <i class="fa fa-heart"></i>
+                <i class="fa fa-file"></i>
+                <i class="fa fa-car"></i>
+                <i class="fa fa-bars"> </i>
+            </div>
+            <br>
+            <hr>
+        </li>
+        <li>
+            <h2>CSS Links</h2>
+            <div class="links">
+                <p>
+                    <a href="https://www.geeksforgeeks.org/">
+                        GeeksforGeeks
+                    </a>
+                    This link will change colours with different states.
+                </p>
+            </div>
+        </li><br>
+        <hr>
+        <li>
+            <h2>CSS Display property</h2>
+            <h4>Display block</h4>
+            <div class="dis_block">Block 1</div>
+            <div class="dis_block">Block 2</div>
+            <div class="dis_block">Block 3</div>
+
+            <h4>Display inline</h4>
+            <span class="in">Block 1</span>
+            <span class="in">Block 2</span>
+            <span class="in">Block 3</span>
+
+            <h4>Display inline-block</h4>
+            <span class="in_block">Block 1</span>
+            <span class="in_block">Block 2</span>
+            <span class="in_block">Block 3</span>
+        </li>
+        <li>
+            <h2>CSS Position Property</h2>
+            <h4>Static</h4>
+            <div class="st1"></div>
+            <div class="st2"></div>
+
+            <h4>Relative</h4>
+            <div class="re1"></div>
+
+            <h4>Absolute</h4>
+            <div class="ab1"></div>
+
+            <h4>Fixed</h4>
+            <div class="fix1"></div>
+
+            <h4>Sticky</h4>
+            <div class="sti1"></div>
+
+            <h4>Position relative with absolute</h4>
+            <div class="pos">
+                <div class="rel"></div>
+            </div>
+        </li><br>
+        <hr>
+
+        <li>
+            <h2>CSS overflow</h2>
+            <h4>overflow:visible;</h4>
+            <p class="ov">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, fuga. Voluptates</p><br>
+            <h4>overflow:hidden;</h4>
+            <p class="oh">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque aut vitae molestias
+                maiores tenetur inventore ex, at veniam natus eligendi.</p>
+            <h4>overflow:scroll;</h4>
+            <p class="os">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore culpa sit eligendi laudantium
+                totam voluptates optio veritatis quae, ipsam autem.</p>
+        </li><br>
+        <hr>
+
+        <li>
+            <h2>CSS float</h2>
+            <h4>float:left;</h4>
+            <div class="flb">
+                <p class="fl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, voluptates?</p>
+            </div>
+
+            <h4>float:right;</h4>
+            <div class="frb">
+                <p class="fr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut, voluptates?</p>
+            </div>
+        </li>
+        <li>
+            <h2>CSS Flex</h2>
+            <h4>flex</h4>
+            <div class="flex-container">
+                <div class="flex-item">Item 1</div>
+                <div class="flex-item">Item 2</div>
+                <div class="flex-item">Item 3</div>
+            </div>
+
+            <h4>CSS flex grow</h4>
+            <div class="container">
+                <div>1</div>
+                <div class="grow">2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+            </div>
+
+            <h4>CSS flex wrap</h4>
+            <div class="container2">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+            </div>
+        </li><br><hr>
+
+        <li>
+            <h2>CSS Transitions</h2>
+            <div class="trans"></div>
+        </li><br><hr>
+
+        <li>
+            <h2>CSS animations</h2>
+            <div class="anime"></div>
+
+            <h2>Animation moveright</h2>
+            <div class="mr"></div>
+
+            <h2>Animation bounce</h2>
+            <div class="bounce"></div>
+
+            <h2>Animation rotate</h2>
+            <div class="rotate"></div>
+
+            <h2>ZigZag</h2>
+            <div class="zigzag">This text is zigzagged.</div>
+        </li>
+    </ul>
+</body>
+
+</html>
