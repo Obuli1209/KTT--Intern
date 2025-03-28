@@ -104,35 +104,43 @@ console.log("Bitwise operator: &  ||  ^  ~  <<  >>");
 
 //Maths Objects
 //Absolute value
-console.log(Math.abs(-5));
+console.log(Math.abs(-5)); //5
 
 //ceil value- high value
-console.log(Math.ceil(4.7));
+console.log(Math.ceil(4.7)); //5
 
 //floor value- low value
-console.log(Math.floor(4.7));
+console.log(Math.floor(4.7)); //4
 
 //round value
-console.log(Math.round(4.5));
+console.log(Math.round(4.5)); //5
 
 //max value
-console.log(Math.max(10,20,30));
+console.log(Math.max(10,20,30)); //30
 
 //min value
-console.log(Math.min(10,20,30));
+console.log(Math.min(10,20,30)); //10
 
 //sqrt value
-console.log(Math.sqrt(25));
+console.log(Math.sqrt(25)); //5
 
 //power value
-console.log(Math.pow(2,3));
+console.log(Math.pow(2,3)); //8
 
 //random value- 0 to 1
-console.log(Math.random());
+console.log(Math.random()); 
 
 //trunc value-> remove decimal
-console.log(Math.trunc(4.7));
+console.log(Math.trunc(4.7)); //4
 
 //sign value-> return 1,0,-1
-console.log(Math.sign(-4));
+console.log(Math.sign(-4)); //-1
+
+//
+console.info("This is an info message.");
+
+console.warn("This is a warning message.");
+
+console.error("This is an error message.");
+
 
