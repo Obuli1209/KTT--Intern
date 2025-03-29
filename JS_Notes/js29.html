@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT Training</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>KT Intern 29.03.2025</h1>
+    </div>
+    <h2>JavaScript has 8 Datatypes</h2>
+    <p>JavaScript has dynamic datatypes. This means that the same variable can be used to hold different data types:
+    </p>
+    <ol>
+        <li>Primitive datatypes - 7</li>
+        <p>Immutable means assign a new value, creates a new memory allocation rather than modifying the existing one.
+        </p>
+        <p>Stored the value in stack memory</p>
+        <img src="/JS_Notes/stack.png" alt="">
+        <ul>
+            <li>Number</li>
+            <li>String</li>
+            <li>Bigint</li>
+            <li>Boolean</li>
+            <li>undefined</li>
+            <li>null</li>
+            <li>symbol</li>
+        </ul>
+        <br>
+        <li>Non-primitive datatype - 1</li>
+        <p>It is muttable. It modify the value in exisiting one.</p>
+        <p>Stored the value in heap memory by reference.</p>
+        <img src="/JS_Notes/heap.png" alt="">
+        <ul>
+            <li>Object - A collection of key-value pairs.</li>
+            <li>Arrays</li>
+            <li>Functions</li>
+        </ul>
+    </ol>
+    <br>
+    <hr>
+    <h2>Nullish Coalescing operator</h2>
+    <p>?? is useful for providing default value, dealing with null or undefined values.</p>
+    <p>
+        let a = 0;<br>
+        console.log(a || "Good day");<br> // ( Logical OR || check all falsy values.)
+        <p>Usecase- check falsy values like (false, 0, "", null, undefined, NaN.)</p>
+        console.log(a ?? "Good day");<br> // (Nullish ?? check for null or undefined.)
+        <p>Usecase- check only null or undefined, keeping (false, 0, "") </p>
+    </p>
+</body>
+
+</html>
