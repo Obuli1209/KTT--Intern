@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    /* background: black; */
+    background-image: linear-gradient(rgb(32, 32, 32), rgb(70, 68, 68));
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    /* background: #333; */
+    background-image: linear-gradient(rgb(32, 32, 32), rgb(70, 68, 68));
+    color: white;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar .hamburger,
+.sidebar image,
+.sidebar .logo {
+    font-size: 25px;
+    padding: 0 10px;
+    color: white;
+}
+
+.sidebar .compose_btn {
+    padding: 10px;
+    border-radius: 15px;
+    margin: 15px 0;
+    width: 80%;
+    font-weight: bold;
+    border: none;
+}
+
+.sidebar .compose_btn:hover {
+    background-color: rgb(37, 124, 236);
+    color: white;
+}
+
+.sidebar ul {
+    margin: 3px 30px;
+    text-decoration: none;
+    /* font-weight: bold; */
+    list-style: none;
+}
+
+.sidebar ul li {
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.sidebar ul li:hover {
+    /* border-radius: 5px; */
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: rgb(77, 72, 72);
+}
+
+.sidebar h3 {
+    margin: 15px;
+    color: white;
+}
+
+.sidebar h3:hover {
+    border-start-start-radius: 5px;
+    background-color: rgb(77, 72, 72);
+    cursor: pointer;
+}
+
+.container {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 20px;
+}
+
+.container .main {
+    position: fixed;
+    top: 0;
+    left: 250px;
+    width: calc(100% - 250px);
+    background-color: rgb(32, 32, 32);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.container .main ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.container .main ul li {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+.container .main input {
+    width: 70%;
+    padding: 15px;
+    border-radius: 30px;
+    /* font-weight: bold; */
+    color: white;
+    background-color: rgb(77, 72, 72);
+    border: none;
+}
+
+.content {
+    margin-top: 70px;
+    padding: 20px;
+}
+
+
+.main input::placeholder {
+    color: white;
+}
+
+.message {
+    /* float: left; */
+    width: 95%;
+    margin-top: 50px;
+    border: 1px solid rgb(77, 72, 72);
+    border-radius: 15px;
+    height: 100%;
+    color: white;
+    background-color: rgb(77, 72, 72);
+}
+
+.message input {
+    width: 20px;
+    margin: 15px;
+    border: 2.5px solid white;
+    background-color: rgb(77, 72, 72);
+}
+
+.message .refresh,
+.message .more {
+    color: white;
+    /* font-weight: bold; */
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+.message .right {
+    display: flex;
+    float: right;
+}
+
+.message .right ul {
+    text-decoration: none;
+    list-style: none;
+}
+
+.message .right ul li {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.heading ul {
+    text-decoration: none;
+    list-style: none;
+    margin: 8px 0;
+}
+
+.heading ul li {
+    display: inline-block;
+    padding: 10px 80px;
+    /* font-weight: bold; */
+}
+
+.heading ul li:hover {
+    background-color: rgb(46, 42, 42);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.content {
+    padding: 0;
+    margin: 0;
+}
+table:hover {
+    background-color: rgb(46, 42, 42);
+    cursor: pointer;
+}
+
+.content span {
+    padding: 0;
+    font-size: 20px;
+}
+
+.content h4 {
+    padding: 0;
+    /* width: 200%; */
+}
+
+.content .time {
+    /* padding: 10px 230px; */
+    width: 6%;
+    font-size: 12px;
+}
+
+.content hr {
+    border-bottom: 1px solid white;
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Gmail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrappper">
+        <div class="sidebar">
+            <span class="hamburger"><i class="fa-solid fa-bars"></i></span>
+            <image src="gmail_logo.png" width="20px" height="20px"></image>
+            <span class="logo"> Gmail</span><br>
+            <button class="compose_btn" onclick="window.location.href='compose.html'">
+                <pre><i class="fa-solid fa-pen"></i>   Compose</pre>
+            </button>
+            <ul>
+                <li title="Inbox"><i class="fa-solid fa-envelope"></i> Inbox</li>
+                <li title="Starred">&#9734; Starred</li>
+                <li title="Snoozed"><i class="fa-solid fa-clock"></i> Snoozed</li>
+                <li title="Sent">&#10148; Sent</li>
+                <li title="Drafts"><i class="fa-solid fa-file"></i> Drafts</li>
+                <li>
+                    <pre><i class="fa-solid fa-angle-down"></i>     More</pre>
+                </li>
+            </ul>
+            <pre><h3>Labels            +</h3></pre>
+        </div>
+        <div class="container">
+            <div class="main">
+                <input type="text" placeholder="Search mail">
+                <ul>
+                    <li title="Support"><i class="fa-solid fa-question"></i></li>
+                    <li title="Settings"><i class="fa-solid fa-gear"></i></li>
+                    <li title="Profile"><i class="fa-solid fa-circle-user"></i></li>
+                </ul>
+            </div>
+            <div class="message">
+                <input list="selection" name="selections" id="selections" title="select">
+                <datalist id="selection">
+                    <option value="All">
+                    <option value="None">
+                    <option value="Read">
+                    <option value="Unread">
+                    <option value="Starred">
+                    <option value="UnStarred">
+                </datalist>
+                <span title="Refresh" class="refresh"><i class="fa-solid fa-rotate-right"></i></span>
+                <span title="More" class="more"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                <div class="right">
+                    <ul>
+                        <li title="Oldest">1-50 of 65</li>
+                        <li title="Newer"><i class="fa-solid fa-angle-left"></i></li>
+                        <li title="Older"><i class="fa-solid fa-angle-right"></i></li>
+                        <li title="Input tools"><i class="fa-solid fa-keyboard"></i></li>
+                    </ul>
+                </div>
+                <div class="heading">
+                    <ul>
+                        <li><i class="fa-solid fa-image"></i> Primary</li>
+                        <li><i class="fa-solid fa-tags"></i> Promotions</li>
+                        <li><i class="fa-solid fa-users"></i> Social</li>
+                        <li><i class="fa-solid fa-circle-info"></i> Updates</li>
+                    </ul>
+                    <hr>
+                </div>
+                <div class="content">
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2721 created by Sugumar M</p>
+                                </td>
+                                <td class="time">09:45 AM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2700 created by Anilraj M I.</p>
+                                </td>
+                                <td class="time">Yesterday</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2697 created by Kishore P</p>
+                                </td>
+                                <td class="time">Mar 19</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2694 created by Saravanan M</p>
+                                </td>
+                                <td class="time">Mar 19</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2683 created by Sabarinathan P</p>
+                                </td>
+                                <td class="time">Mar 18</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2684 created by Sanjay santhosh</p>
+                                </td>
+                                <td class="time">Mar 17</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2679 created by Kaviya S</p>
+                                </td>
+                                <td class="time">Mar 17</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- set 2 -->
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2631 created by Sugumar M</p>
+                                </td>
+                                <td class="time">Mar 16</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2610 created by Anilraj M I.</p>
+                                </td>
+                                <td class="time">Mar 16</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2597 created by Kishore P</p>
+                                </td>
+                                <td class="time">Mar 15</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2524 created by Saravanan M</p>
+                                </td>
+                                <td class="time">Mar 15</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2413 created by Sabarinathan P</p>
+                                </td>
+                                <td class="time">Mar 14</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2384 created by Sanjay santhosh</p>
+                                </td>
+                                <td class="time">Mar 14</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr>
+                                <td style="width: 40px;"><input type="checkbox"></td>
+                                <td><span>&#9734;</span></td>
+                                <td>
+                                    <h4>KT Telematic</h4>
+                                </td>
+                                <td>
+                                    <p>New Ticket #2219 created by Kaviya S</p>
+                                </td>
+                                <td class="time">Mar 13</td>
+                                <hr>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
