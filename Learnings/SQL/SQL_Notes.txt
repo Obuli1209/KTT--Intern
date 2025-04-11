@@ -1,0 +1,79 @@
+1.what is databse
+	A databse is a structured collection of information thats stored electronically.
+
+2.Types of databse.
+a. RDBMS - store data in rows and columns.
+	 - easy access and management.
+	 - e-commerce, healthcare, education, airlines.
+b. NoSQL - flexible, unstructured data.
+	 - web application, social media.
+	 - Netflix, Uber, Airbnb and google.
+c. Cloud db - relational or NoSQL, hosted in cloud.
+	    - scalability, flexibility.
+	    - Amazon RDS, google cloud sql, azure sql.
+d. vector db - numerical representations of data.
+	     - AI, ML.
+	     - Pinecone(DISCO, workdy, shopify), weaviate(software enginers, data scientist, data analytics), milvus(zomato).
+
+
+Relational Database Management System.
+	- Primary key(unique ID).
+	- Foreign key (that links the primary key for another table).
+
+Why "Relational"?
+	- SQL - Structured Query Language.
+	- Because the data in one table can be related to the data in another table through foreign keys.
+	- ACID(Guarantees reliability in transactions (Atomicity, Consistency, Isolation, Durability).
+	- Build in support for backup and recovery mechanisms.
+
+Popular RDBMS 
+	MySQL
+	PostgreSQL
+	Oracle Database
+	Microsoft SQL Server
+	SQLite
+
+how to choose database?
+	-E-commerce, banking              - MySQL, PostgreSQL
+	-Real-time chat, Notifications    - Firebase Realtime DB, Redis
+	-Social Media, Analytics, IoT	  - MongoDB, Cassandra
+	-CMS, Blog, Admin Panels	  - SQLite, PostgreSQL
+	-Mobile Apps			  - Firebase, SQLite.
+	-
+
+Key SQL concepts 
+	-The core of an RDBMS is tables. Tables allow you to organize data in rows and columns:
+
+	-Columns: represent specific fields(headings).
+	-Rows: stores individual records(values or records).
+
+SQL is a declarative language.
+	-you tell the database what you want, not how to get it.
+
+SQL datatypes:
+1.Numeric datatype - INT, SMALLINT, BIGINT, DECIMAL, FLOAT, REAL, DOUBLE.
+2.Character datatype - CHAR(n), VARCHAR(n), TEXT.
+3.Boolean datatype - BOOL.
+4.Binary datatype - BINARY(n), VARBINARY(n), BLOB.
+5.Date and Time datatype - DATE, TIME, DATETIME, YEAR,TIMESTAP.
+
+SQLOperators:
+1.Arithmetic - ( + - * / %)
+2.comaprison - ( = != > < >= <=)
+3.Logical - ( AND OR NOT)
+4.special - (BETWEEN...AND...   IN(...)  LIKE(%[all] and _[exactly one])  IS NULL	ISNOTNULL  EXISTS)  
+
+
+SQL keywords:
+1. DDL(Data Definition Language) - define or change the structure of database.
+	-CREATE(table & databse)
+	-ALTER(modify database table)
+	-DROP(delete table)
+	-TRUNCATE(remove all rows in table)
+	-RENAME(change table name)
+
+2. DML(Data Manipulation Language) - used to manipulate data stored in tables.
+	-SELECT(select tables)
+	-INSERT(add new rows on atble)
+	-UPDATE(modify existing data)
+	-DELETE(remove data from a table)
