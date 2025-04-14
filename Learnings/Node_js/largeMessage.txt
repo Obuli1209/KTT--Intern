@@ -1,0 +1,18 @@
+Node.js is a JavaScript runtime environment that allows developers to run JavaScript on the server. It's open-source, cross-platform, and built on Chrome's V8 JavaScript engine. 
+Node.js
+What it does
+Allows developers to create servers, web apps, command line tools, and scripts
+How it works
+Runs the V8 JavaScript engine outside of the browser
+Benefits
+Fast, lightweight, scalable, efficient, and non-blocking I/O capable
+Use cases
+Building web applications, real-time data streaming apps, chat applications, and web servers
+Who uses it
+Many big businesses, including Amazon, Netflix, eBay, Reddit, and PayPal
+Node.js is popular because it: 
+Unifies front-end and back-end development under a single language 
+Is event-driven and asynchronous, which makes it memory efficient 
+Can handle thousands of concurrent connections with a single server 
+Is designed with streaming and low latency in mind 
+Node.js was created in 2009 by Ryan Dahl. 
