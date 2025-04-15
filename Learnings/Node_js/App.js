@@ -17,7 +17,7 @@
 
 // -> key features of node js
 // Asynchronous and event-driven.
-// NPM(node package module) - over 3.1 million packages.
+// NPM(node package manager) - over 3.1 million packages.
 // single programming language -  both client and server side used.
 // single threaded with event loop - handle many requests without create multiple threads.
 // cross platform.
@@ -158,7 +158,7 @@ console.log("Server can handle other requests...");
 
 
 
-console.log("***************** Reading File using fs.createReadStream ***************");
+console.log("***************** Reading Big File using fs.createReadStream ***************");
 const fs4 = require("fs");
 const stream = fs4.createReadStream('../Node_js/largeMessage.txt','utf8');
 stream.on('data',(chunk)=>{
@@ -170,4 +170,86 @@ stream.on('end',()=>{
 stream.on('error',(err)=>{
   console.log("Error occured: ",err);
 });
+
+
+
+console.log("***************** Writing file using writeFile ***************");
+const fs5 = require("fs");
+
+fs5.writeFile('../Node_js/writefile.txt', "Hello, I'm Obuli from KT Telematics Solution Pvt Ltd", (err) => {
+  if (err) {
+    console.error("Error writing file:", err);
+    return;
+  }
+  console.log("writeFile: File written successfully");
+});
+
+console.log("***************** Writing file using createWriteStream ***************");
+const fs6 = require('fs');
+const writefile = fs6.createWriteStream('../Node_js/largeMessage.txt');
+writefile.write("Log in 1\n");
+writefile.write("Log in 2\n");
+writefile.write("Log in 3\n");
+writefile.write("Log in 4\n");
+writefile.end("Log in end");
+writefile.on('finish',()=>{
+  console.log("createWriteStream: large file written successfully");
+});
+
+console.log("***************** Creating file using mkdir ***************");
+const fs7 = require('fs');
+fs7.mkdir('expressworks',(err)=>{
+  if(err){
+    throw err;
+  }
+  console.log("File created succesfully");
+});
+
+console.log("***************** read file directory using readdir ***************");
+const fs8 = require('fs');
+fs8.readdir('myFolder',(err,files)=>{
+  if(err){
+    console.log("Error reading file directory: ",err);
+  }
+  else{
+  console.log("File directory read successfully: ",files);
+}
+});
+
+
+console.log("***************** Create HTTP server ***************");
+const http = require('http');
+const server = http.createServer((req,res)=>{
+  res.writeHead(200,{'content-Type':'text/HTML'});
+  res.end("<h1>Hello, this is the simple HTTP server</h1>");
+});
+server.listen(3000,()=>{
+  console.log("The server works on localhost:3000");
+});
+
+
+console.log("***************** Handling HTTP requests and response. ***************");
+console.log("Request Object (req)");
+// req.url – The path requested (like /, /about)
+// req.method – HTTP method used (GET, POST, PUT, PATCH, DELETE.)
+// req.headers – Request headers
+// req.on('data') – Used for POST data
+
+console.log("Response Object (res)");
+// res.writeHead(statusCode, headers) – Set status and headers
+// res.write(data) – Write chunks of data (optional)
+// res.end(data) – End the response and optionally send content
+
+
+
+console.log("***************** Serving Static files***************");
+// Serving Static Files in Node.js is a fundamental operation when developing a web server.
+// HTML, CSS, JS, Images and other sources are not change dynamically. 
+
+const fs8 = require('fs');
+fs8.readFile('C:\Users\OBLI\Music\music-1', 'utf8', (err,data)=>{
+  if(err) throw err;
+  console.log("read file successfully...",data);
+});
+
 
