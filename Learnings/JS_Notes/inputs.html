@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Events Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input, select {
+      display: block;
+      margin: 15px 0;
+      padding: 10px;
+      width: 300px;
+    }
+
+    .log {
+      margin-top: 20px;
+      background-color: #f5f5f5;
+      padding: 10px;
+      border: 1px solid #ccc;
+      height: 120px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>JavaScript Form Events</h2>
+
+  <!-- Input Event -->
+  <label for="liveInput">Live Input (input event):</label>
+  <input type="text" id="liveInput" placeholder="Type something..." />
+
+  <!-- Change Event -->
+  <label for="selectColor">Choose a Color (change event):</label>
+  <select id="selectColor">
+    <option value="">-- Select --</option>
+    <option value="red">Red</option>
+    <option value="blue">Blue</option>
+    <option value="green">Green</option>
+  </select>
+
+  <!-- Cut, Copy, Paste -->
+  <label for="textField">Try Cut / Copy / Paste:</label>
+  <input type="text" id="textField" placeholder="Try cut, copy, or paste..." />
+
+  <!-- Password Paste Block -->
+  <label for="password">Password (paste disabled):</label>
+  <input type="password" id="password" placeholder="Can't paste here" />
+
+  <!-- Output log -->
+  <div class="log" id="logBox">
+    <strong>Event Logs:</strong><br>
+  </div>
+
+  <script>
+    const logBox = document.getElementById('logBox');
+
+    function log(msg) {
+      const entry = document.createElement('div');
+      entry.textContent = msg;
+      logBox.appendChild(entry);
+      logBox.scrollTop = logBox.scrollHeight; // auto scroll
+    }
+
+    // Input Event
+    document.getElementById('liveInput').addEventListener('input', (e) => {
+      log(`Input changed: ${e.target.value}`);
+    });
+
+    // Change Event
+    document.getElementById('selectColor').addEventListener('change', (e) => {
+      log(`Color selected: ${e.target.value}`);
+    });
+
+    // Cut/Copy/Paste Events
+    const textField = document.getElementById('textField');
+    textField.addEventListener('cut', () => log('Cut detected!'));
+    textField.addEventListener('copy', () => log('Copy detected!'));
+    textField.addEventListener('paste', () => log('Paste detected!'));
+
+    // Block paste in password
+    const password = document.getElementById('password');
+    password.addEventListener('paste', (e) => {
+      e.preventDefault();
+      alert('Pasting not allowed in this field!');
+      log('Paste attempt blocked on password field');
+    });
+  </script>
+
+</body>
+</html>
