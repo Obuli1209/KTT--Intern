@@ -1,0 +1,89 @@
+database
+ - stored in organized collection of structured information.
+ - stored in electronically.
+
+need of database
+ - storing,managing and retrieving amount of data.
+ - in one data it is remember incase more amount of data come, so need database for storing.
+
+different types of databases
+ - SQL, NoSQL, cloud databases, object-oriented databases, Network databases.
+
+SQL - structured Query Langauge(RDBMS)
+ - tables with rows and columns.
+ - SQL is interact with database.
+ - fixed schema.
+ - ACID compliant.
+ - MySQL, PostgreSQL, Oracle, MS SQL Server
+
+ NoSQL - Non structured Query language(Non-RDMS)
+ - key-values, graph based, document based.
+ - flexiable schema.
+ - BASE compliant.
+ - MongoDB, Cassandra, CouchDB.
+
+ ACID Properties
+ - Atomicity - Transactions fully completed or failure. In, partial complete it takes as failure.
+ - Consistency - work consistencly.
+ - Isolation - If read or write in any one operation in database, it couldnot affect the another operations.
+ - Durability - once transaction is committed, event of systems fail, it stored the data permanently , not lost.
+
+ MySQL and PostgreSQL are the "software" that manages databases.
+
+ RDBMS - Relational Database Management System.
+ - it is a software, manage and store relational data.       Database->software(RDBMS(MYsql,postgresql))->SQL
+ - RDBMS use SQL to interact with database.                  Database->software(NRDBMS(MongoDB))->Nosql.
+ - tables-> rows and columns.
+
+ - Primary key-> uniquely identify each record on a table, unique identifier in each row.
+ - Foreign key-> relationship between primary key and another table.
+ - composite key-> It is primary key combining two or more columns.
+
+ - one to one-> one table in single record exactly associated with the another table.
+ - one to many-> one record in a table associated with multiple tables. 
+ (EX: customer, order the many orders but all orders have only one customer).
+ - many to many-> many records in a table associated with many records in another table.
+ (EX: customers purchase many products and many products purchased by different customers).
+
+
+ Mysql
+ - fast read and write.
+ 
+ postgresql
+ - fast posting.
+ - bulk datas post becuase of binary copy method.
+
+
+
+ Syntax
+DDL - Data Definition Language
+
+create database Shopping;
+
+create table Customers(
+  customer_id int,
+  first_name varchar(255),
+  last_name varchar(255),
+  age int,
+  country varchar(255)
+);
+
+alter table Customers                                   -> add the new column using alter keyword.
+add column phone_number varchar(15);
+
+drop table Customers;                                   -> to delete the customer table and data also.
+
+
+
+Datatypes:
+ - Numeric Datatypes
+      - BIT, TINYINT, SMALLINT, INT, BIGINT.
+ - String Datatypes
+      - CHAR(8000), VARCHAR(8000), TEXT(2GB), IMAGE(2GB), BLOB, MEDIUMBLOB, LONGBLOB.
+ - Date and Time Datatypes.
+      - DATE, TIME, DATETIME,YEAR, TIMESTAMP. 
+
+Seven Constraints:
+ - primary key, foriegn key, NOT NULL, UNIQUE, CHECK, DEFAULT, INDEX.
+
+ 
