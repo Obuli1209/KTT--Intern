@@ -87,3 +87,82 @@ Seven Constraints:
  - primary key, foriegn key, NOT NULL, UNIQUE, CHECK, DEFAULT, INDEX.
 
  
+
+ DML - Data Manipulation language
+ - To access and manipulate the datas in table.
+ - SELECT, INSERT, UPDATE, DELETE.
+
+ CREATE TABLE "Users"(
+    id SERIAL NOT NULL,
+    name varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    phone varchar(255) NOT NULL,
+    status integer DEFAULT 1,
+    "createdAt" timestamp with time zone NOT NULL,
+    "updatedAt" timestamp with time zone NOT NULL,
+    "UserRoleId" integer NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT Users_UserRoleId_fkey FOREIGN key("UserRoleId") REFERENCES "UserRoles"(id)
+);
+
+SELECT id, name, "password", email, phone, status, "createdAt", "updatedAt", "UserRoleId"
+FROM public."Users";
+
+insert into "Users" (id, name, "password", email, phone, status, "createdAt", "updatedAt","UserRoleId")
+values (3,'Sridhar','sri','sridhar@gmail.com','9361877619',2,now(),now(),2);
+
+
+update "Users" set "password" = 'pass123'
+where id =3;
+
+update "Users" set email = 'sridharsri@gmail.com'
+where id =3;
+
+
+delete from "Users" 
+where id=2;
+
+select * from "Users"
+order by name asc;
+
+select name, count(*) as "Total_count"
+from "Users"
+group by name;
+
+
+select sum(status) from "Users";
+
+select max(id) from "Users";
+
+select min(id) from "Users";
+
+
+Joining table
+-Inner Joining
+   - combine rows that have matching values in a field common to both tables.
+
+select  "Users".name, "UserRoles".name
+from "Users"
+inner join "UserRoles"
+on "Users"."UserRoleId" = "UserRoles".id;
+
+
+-Left joining
+   - retrieve all records from left table and matching records from right table.
+   - if no matching in right table it returns the NULL value.
+
+select "Users".id, "Users".name,"Users".email,"Users".password,"Users".phone, "UserRoles".name, "UserRoles".status
+from "Users"
+left join "UserRoles"
+on "Users"."UserRoleId" = "UserRoles".id;
+
+
+-Right Joining
+   - retrieve all records from right table and matching records from left table.
+   - If no matching in left table it returns the NULL value.
+
+select "Users".id, "Users".name,"Users".email,"Users".password,"Users".phone, "UserRoles".name, "UserRoles".status
+from "Users"
+right join "UserRoles"
+on "Users"."UserRoleId" = "UserRoles".id;
