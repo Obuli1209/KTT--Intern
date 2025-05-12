@@ -28,6 +28,48 @@ SQL - structured Query Langauge(RDBMS)
  - Isolation - If read or write in any one operation in database, it couldnot affect the another operations.
  - Durability - once transaction is committed, event of systems fail, it stored the data permanently , not lost.
 
+ACID is an acronym that describes the key properties of a reliable database transaction:
+
+🔹 A — Atomicity
+"All or nothing"
+
+A transaction must either complete fully or not at all.
+
+If one part of the transaction fails, the entire transaction is rolled back.
+
+Example:
+
+Transferring ₹500 from Account A to Account B must debit A and credit B — both must succeed or neither should.
+
+🔹 C — Consistency
+"Valid state transition"
+
+A transaction must leave the database in a valid state, maintaining all defined rules, constraints, and data integrity.
+
+Example:
+
+A foreign key must always point to an existing record; no orphan records allowed after a transaction.
+
+🔹 I — Isolation
+"Concurrent safety"
+
+Transactions do not interfere with each other even when run at the same time.
+
+Ensures that intermediate transaction steps are not visible to others.
+
+Example:
+
+Two users booking the last seat on a train — the system ensures that only one actually books it.
+
+🔹 D — Durability
+"Permanent change"
+
+Once a transaction is committed, it persists, even in the case of system failure or crash.
+
+Example:
+
+After a successful online order, even if the server crashes, your order remains saved.
+
  MySQL and PostgreSQL are the "software" that manages databases.
 
  RDBMS - Relational Database Management System.
