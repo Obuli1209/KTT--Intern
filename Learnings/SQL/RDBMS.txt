@@ -30,7 +30,7 @@ SQL - structured Query Langauge(RDBMS)
 
 ACID is an acronym that describes the key properties of a reliable database transaction:
 
-🔹 A — Atomicity
+A — Atomicity
 "All or nothing"
 
 A transaction must either complete fully or not at all.
@@ -41,7 +41,7 @@ Example:
 
 Transferring ₹500 from Account A to Account B must debit A and credit B — both must succeed or neither should.
 
-🔹 C — Consistency
+C — Consistency
 "Valid state transition"
 
 A transaction must leave the database in a valid state, maintaining all defined rules, constraints, and data integrity.
@@ -50,7 +50,7 @@ Example:
 
 A foreign key must always point to an existing record; no orphan records allowed after a transaction.
 
-🔹 I — Isolation
+I — Isolation
 "Concurrent safety"
 
 Transactions do not interfere with each other even when run at the same time.
@@ -60,8 +60,7 @@ Ensures that intermediate transaction steps are not visible to others.
 Example:
 
 Two users booking the last seat on a train — the system ensures that only one actually books it.
-
-🔹 D — Durability
+ D — Durability
 "Permanent change"
 
 Once a transaction is committed, it persists, even in the case of system failure or crash.
@@ -179,7 +178,7 @@ select max(id) from "Users";
 
 select min(id) from "Users";
 
-
+////////////////////////////////////////////////////////////////////////////// Joinings ///////////////////////////////
 Joining table
 -Inner Joining
    - combine rows that have matching values in a field common to both tables.
@@ -208,3 +207,198 @@ select "Users".id, "Users".name,"Users".email,"Users".password,"Users".phone, "U
 from "Users"
 right join "UserRoles"
 on "Users"."UserRoleId" = "UserRoles".id;
+
+////////////////////////////////////////////////////////////////// Subqueries /////////////////////////////////////////
+-Normal Subqueries
+ - subquery is independent and executedon its own.
+ - it return single or set of results.
+ - one query depends on result of another.
+ - used in realtime example: filtering data based on another table like get users with admin role.
+- common use cashes
+ - where, from,select,in,exists,=,>,any,all.
+
+SELECT 
+    u.name,
+    u."UserRoleId",
+    ur.name AS role_name
+FROM "Users" u
+JOIN "UserRoles" ur ON ur.Id = u."UserRoleId";
+
+
+
+-Correleted Subqueries
+  - the subquery is dependent on outer query
+  - thi subqery executed for each row processed by outer query.
+ SELECT 
+    u.name,
+    u."UserRoleId",
+    (SELECT ur.name FROM "UserRoles" ur WHERE ur.Id = u."UserRoleId") AS role_name
+FROM "Users" u;
+
+//////////////////////////////////////////////////////// COmmon Table Expressions ////////////////////////////////////////////////
+-Common Table Expressions(CTE)
+ - temporary result set.
+ - allows recursive queries.
+ - select, insert, update, delete.
+
+ -why use
+  - reuse temporary reslut.
+  - Improve readability of complex queries.
+  - Break down logic into modular parts.
+
+with RoleCTE as (
+   select id, name from "UserRoles"
+)
+select u.name, u."UserRoleId", r.name as role_name
+from "Users" u
+join RoleCTE r on u."UserRoleId" = r.id;
+
+
+/////////////////////////////////////////////////////////////////////// Query cost //////////////////////////////////////////////
+
+What is Query Cost?
+  - Time taken by the query between database and return the result.
+  - Query cost represents the resources required to execute a query.
+
+why need to use query cost?
+ - to understand and optimize the performance
+ - query optimization, identifying bottlenecks(pinpoint part of query consuming most time.)
+ - and also used LIMIT clause and pg_stat_statements Extension.
+
+When to Use Query Costs
+ - Analyzing Slow Queries
+ - Large Dataset Queries.
+
+
+These resources include:
+ - CPU time
+ - Disk I/O operations
+ - Memory access time
+ - Network cost (in distributed systems)
+
+- Databases use this cost to choose the best execution plan (e.g., use of index, join order).
+
+Cost is Measured by:
+ - Cost = (tT × tS × b × S)
+
+Where:
+ - tT	(Transfer time) – time to transfer a data block from disk/memory
+ - tS	(Seek time) – time to locate the data block on the disk (includes latency)
+ - b	(Number of blocks) involved in the operation
+ - S	I/O operations or size of block/data
+
+
+- HDD (disk)
+	tT- 40 MB/s (~1ms)
+   tS- 4 ms
+
+- SSD (SATA)	
+   tT- 10 us	
+   tS- 90 us
+
+- Main Memory (RAM)	
+   tT- 1 us	
+   tS- 100 ns
+
+- Query Cost Works:
+    1.Accessing 4KB block from HDD:
+       tS = 4ms, tT = ~1ms
+       Total: ~5ms to read one block
+
+    2.Accessing 4KB block from SSD:
+       tS = 90us, tT = 10us
+       Total: ~100us
+
+    3.Accessing from RAM (main memory):
+       tS = 100ns, tT = 1us
+       Extremely fast
+
+- explain analyze select * from "Users";          
+output:
+Seq Scan on "Users"  (cost=0.00..10.30 rows=30 width=2092) (actual time=0.021..0.023 rows=2 loops=1)
+Planning Time: 0.153 ms
+Execution Time: 0.046 ms
+
+seq scan - sequentially scan from all rows in "Users" table.
+cost = 0.00 - it means start query cost in 0.00 arbitary units.
+cost = 10.30 - it means end query cost in 10.30 arbitary units.
+1 cost ~ 0.5ms 
+
+arbitary units means not in time, dollars or meters.  they’re just numbers used for comparison inside a system.
+
+rows=30 means estimated rows to calculate.
+width=2092 means calculate the each row size in bytes (2kb)
+
+actual time = 0.023 means start the first row.
+actual time = 0.023 means ends with last row.
+
+rows=2 means it shows how many rows in tables.
+
+loops=1 means it repeats the plans.
+
+plannig time = 0.153ms means planning time for query costs.
+
+Execution time = 0.046ms means total time from start to finish of query execution, including scan, filters, and any other steps.
+
+ 
+ ////////////////////////////////////////////////////////// Window functions //////////////////////////////////////////////////
+- window functions
+ - It is type of sql function.
+ - It calculate the set of function rows related to current row.
+- key points
+ - Preserves row data
+   - aggregate function(SUM(),COUNT(),etc).
+ - Window of data
+   - OVER() - indicates using window function.
+   - PARTITION BY - diivdes rows into groups.
+   - ORDER BY - sort the rows.
+ - Ranking function 
+   - RANK() - 	Rank within a partition (1,2,2,4);
+   - DENSE_RANK() - Rank, no skipped numbers (1,2,2,3).
+   - ROW_NUMBER()- Unique row number per partition(1,2,3).
+
+SELECT name, department, salary,
+  RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS rnk,
+  DENSE_RANK() OVER (PARTITION BY department ORDER BY salary DESC) AS dense_rnk,
+  ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC) AS rownum
+  FROM Users;
+
+ - value function - Used to compare values across rows — previous or next.
+   - LAG(), LEAD().
+
+SELECT name, department, salary,
+  LAG(salary) OVER (PARTITION BY department ORDER BY salary) AS prev_salary,
+  LEAD(salary) OVER (PARTITION BY department ORDER BY salary) AS next_salary
+FROM Users;
+
+
+//////////////////////////////////////////////////////////// Data Control Language //////////////////////////////////////////////////
+- Data control Language (DCL).
+ - GRANT - Grants permissions to a user to perform operations like SELECT, INSERT, UPDATE, DELETE, ALL.
+
+Query:
+       Grant select, insert
+       on "Users"
+       to Obuli;
+
+
+ - REVOKE - Removes previously granted permissions from a user.
+ Query:
+         REVOKE INSERT
+         ON "UserRoles"
+         FROM obuli;
+
+
+/////////////////////////////////////////////////////////////// Transactions ////////////////////////////////////////////////
+- Transactions
+  - Transactions is a grouping of one or more statements interact with the database.
+  - Transactions is a sequence of SQL operation.
+  - performance on single unit of work.
+  - Transactions follow the ACID properties.
+
+- Transaction commands
+  - BEGIN - start new transaction, COMMIT - save all changes, ROLLBACK - undo the process.
+
+
+
+
