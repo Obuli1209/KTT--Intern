@@ -1,0 +1,351 @@
+- Postgresql index
+ - An index in PostgreSQL is a tool that helps to speed up the process of finding data in a table.
+ - Without index in PostgreSQL, the finding data in large tables could be slow.
+
+/////////////////////////////////////////////////////////////////// B- Tree Index ////////////////////////////////////////////////////////////////
+- (B-Tree index)
+ - It is a self-balanced tree structure.
+ - Each node in it can have multiple child nodes (multi-way)
+ - This is the default index for PostgreSQL and is well suited for more sceanrios.
+
+           +---------------------+
+           |  10  |  20  |  30   |
+           +---------------------+
+          /        |         \
+ +---------+    +---------+    +---------+
+ |  1 |  5  |    | 11 | 15  |    | 21 | 25  |
+ +---------+    +---------+    +---------+
+
+
+Working:
+ - It can efficiently perform range queries( >, <, >=, <= ), equality queries( = ), and sorting operations( OrderBy ).
+
+Why: Supports equality and range queries efficiently.
+Operators: =, <, >, <=, >=, BETWEEN
+
+Syntax: 
+ - Creare index idx_name ON table_name (column_name).
+
+
+/////////////////////////////////////////////////////////////////// Hash Tree Index ////////////////////////////////////////////////////////////////
+
+-(Hash Tree Index)
+ - The Hash index uses a hash table structure. 
+ - It maps the key values to a slot in the hash table through a hash function. 
+ - The hash table is usually an array, and each slot can store one or more key-value pairs. 
+ - When a hash conflict occurs, the linked list method or open addressing method is usually used to handle it.
+
++---+---+---+---+
+| 0 | 1 | 2 | 3 |
++---+---+---+---+
+|   |   | 10->20|
+|   |   |       |
++---+---+---+---+
+
+Working:
+ - The Hash index converts the key values into a fixed-length hash code through the hash function, and then finds the corresponding slot according to the hash code. 
+ - It is only suitable for equality queries because the hash function cannot guarantee the order of the key values, so it does not support range queries and sorting operations.
+
+Why: Fast equality-only lookups.
+Operator: =
+
+
+Syntax:
+ - CREATE INDEX idx_hashname ON table_name USING hash (column_name).
+  
+
+///////////////////////////////////////////////////////////////////GIST Index ////////////////////////////////////////////////////////////////
+
+- GiST (Generalized Search Tree)
+ - GiST (Generalized Search Tree) is a general search tree structure.
+ - Its nodes can store different types of data and operator classes.
+ - Each node usually contains multiple key-value pairs and pointers to child nodes. 
+ - It can perform customized splitting and merging operations according to different data types and operators.
+
+           +---------------------+
+           |  Rect1 |  Rect2  |   |
+           +---------------------+
+          /        |         \
+ +---------+    +---------+    +---------+
+ | Point1 |    | Point2  |    | Point3  |
+ +---------+    +---------+    +---------+
+
+Working:
+ - It organizes the data into a tree structure by recursively dividing the data space.
+ - According to the query conditions and operator classes, 
+ - it starts from the root node and recursively searches downward until the nodes that meet the conditions are found.
+
+Why: Great for geometric, full-text, and range types.
+Operators: &&, @>, <@ (range overlaps etc.)
+
+
+Application: 
+ - Full-text Search(Text data) 
+ - Geometric Data Query( Points, Lines, Planes, )
+ - Range types (int4range, daterange, etc.),  (<<, &<, &>, >>, @>, <@, ~=)
+ - Multidimensional Data Query( Arrays and Vectors ).
+
+Syntax:
+  CREATE INDEX id_gistname ON table_name using gist (column_name).
+
+/////////////////////////////////////////////////////////////////// SP-GIST Index ////////////////////////////////////////////////////////////////
+
+- SP-GiST (Space - Partitioned GiST)
+ - It organizes the data into a tree structure by partitioning the data space. 
+ - Each node contains multiple partitions and pointers to child nodes,
+ - and the partitions can be dynamically adjusted according to the distribution of the data.
+
+           +---------------------+
+           |  Part1 |  Part2  |   |
+           +---------------------+
+          /        |         \
+ +---------+    +---------+    +---------+
+ | SubP1   |    | SubP2   |    | SubP3   |
+ +---------+    +---------+    +---------+
+
+Working:
+ - The SP - GiST index is suitable for handling unbalanced data distribution.
+ - When performing a query, according to the query conditions and partition information, 
+ - it starts from the root node and recursively searches downward until the nodes that meet the conditions are found.
+
+Why: Best for tree structures, like IP ranges or text prefix matching.
+Operators: LIKE, =, IS NOT DISTINCT FROM
+
+Application:
+ - Multidimensional Data Query(Arrays and Vectors).
+ - Sparse Data Query(effextively handle large data and avoid performance problems of traditionalindexes).
+
+Syntax:
+  CREATE idx_spgistname ON table_name using spgist (column_name).
+
+/////////////////////////////////////////////////////////////////// GIN Index ////////////////////////////////////////////////////////////////
+
+- GIN(Generalized Inverted Index)
+ - It records the occurrence positions of each key value in a list.
+ - Specifically, it maintains a mapping from key values to a list of document IDs, 
+ - where the document IDs represent the records that contain that key value.
+
++------+-----------------+
+| Key  | Document IDs    |
++------+-----------------+
+|  A   |  1, 3, 5        |
+|  B   |  2, 4           |
++------+-----------------+
+
+Working:
+ - The GIN index is suitable for multi-valued columns and full-text search.
+
+Why: Fast containment lookups.
+Operators: @>, @@, ?, ?|, ?&
+
+Application:
+ - tsvector (for full-text search)
+ - array Query
+ - jsonb (for key/value queries)
+ - hstore
+
+Syntax:
+  CREATE INDEX idx_gin ON table_name using gin (column_name);
+
+/////////////////////////////////////////////////////////////////// BRIN Index ////////////////////////////////////////////////////////////////
+- BRIN(Block Range Index).
+ - It reduces the size of the index by storing the minimum and maximum values of each data block. 
+ - The index file is composed of a series of block range entries, 
+ - and each entry contains the starting block number, ending block number, 
+ - minimum value, and maximum value of a data block.
+
++---------------------+
+| Block Range | Min | Max |
++---------------------+
+|  0 - 10     |  1  | 10  |
+| 11 - 20     | 11  | 20  |
++---------------------+
+
+Working:
+ - The BRIN index is suitable for very large tables.
+ - By storing the minimum and maximum values of each block range,
+ - when performing a query, it can quickly determine whether a data block may contain data that meets the query conditions,
+ - thereby reducing the number of data blocks that need to be scanned.
+ - since it only records the boundary information of block range, so the query performance is low.
+
+Why: Best for very large tables with naturally ordered data.
+Operators: Same as B-Tree, but for large and sorted tables.
+
+Application:
+ - Very large tables.
+ - Data inserted in order.
+ - range queries(<, <=, =, >= >)
+
+Syntax:
+  CREATE INDEX idx_brin ON table_name using brin (column_name).
+
+/////////////////////////////////////////////////////////////////// Bitmap Index ////////////////////////////////////////////////////////////////
+
+- Bitmap Index
+ - It uses a bitmap structure.
+ - For each different key value, it maintains a bitmap and each bit of the bitmap corresponds to a record.
+ - If bit as 1, it means corresponding record contains the key values.
+ - If bit as 0, no key values in records.
+ - Bitmap index is suitable for few different values in column.
+
++------+---------------------+
+| Key  | Bitmap              |
++------+---------------------+
+|  A   |  1 0 1 0 1          |
+|  B   |  0 1 0 1 0          |
++------+---------------------+
+
+Working
+ - When performing a query, according to the query conditions,
+ - it finds the corresponding bitmap, then performs bit operations. 
+
+Why: Combines multiple conditions efficiently.
+Operator: Bitmap index is not user-created; PostgreSQL uses it internally.
+
+Application:
+ - Low values in column.
+ - Combined queris of multiple conditons.
+
+Syntax - Bitmap does not have separate Syntax, it same for B- Tree Syntax.
+
+/////////////////////////////////////////////////////////////////// Partial Index ////////////////////////////////////////////////////////////////
+
+- Partial Index
+ - The data structure of the Partial index is the same as that of a common index,
+ - It only creates an index for a part of the data in the table. 
+ - It only includes the data that meets the condition by adding a conditional expression.
+
+ Original Table:
++----+-------+
+| ID | Value |
++----+-------+
+| 1  |  A    |
+| 2  |  B    |
+| 3  |  A    |
++----+-------+
+
+Partial Index (Value = 'A'):
++----+-------+
+| ID | Value |
++----+-------+
+| 1  |  A    |
+| 3  |  A    |
++----+-------+
+
+Working:
+ - The Partial index reduces the size and maintenance cost of the index by only creating an index for part of the data,
+ - and improves the efficiency of the index. 
+
+Why: Faster and smaller index when you only need some rows indexed.
+Operators: Same as base type (=, etc.), but for filtered rows.
+
+Application:
+ - Index only a part of the data
+ - Improve index efficiency.
+
+Syntax:
+  CREATE INDEX idx-partial ON table_name (column_name) WHERE condition;
+
+/////////////////////////////////////////////////////////////////// Unique Index ////////////////////////////////////////////////////////////////
+
+- Unique Index
+ - The data structure of the Unique index is the same as that of a common index, 
+ - and usually uses a B - Tree or other suitable index structure.
+ - Its characteristic is to ensure that all values in the index column are unique.
+
++----+-------+
+| ID | Value |
++----+-------+
+| 1  |  A    |
+| 2  |  B    |
+| 3  |  C    |
++----+-------+
+
+Working:
+ - The Unique index checks whether the values in the index column are unique when inserting or updating data to ensure that all values in the index column are unique. 
+ - If the uniqueness constraint is violated, the operation will be rejected.
+
+Why: Enforce constraints (e.g., unique ISBN).
+Operators: =
+
+Application:
+ - Primary key constraint
+ - unique key
+
+Syntax:
+   CREATE UNIQUE INDEX idx_unique ON table_namme(column_name);
+
+
+
+///////////////////////////////////////////////////////////////// All queries /////////////////////////////////////////////////////
+
+DROP TABLE IF EXISTS books;
+CREATE TABLE books (
+  id SERIAL PRIMARY KEY,
+  title TEXT,
+  author TEXT,
+  year INT,
+  isbn TEXT,
+  available BOOLEAN,
+  tags TEXT[],
+  year_range int4range,
+  metadata JSONB
+);
+
+-- Sample data
+INSERT INTO books (title, author, year, isbn, available, tags, metadata)
+VALUES
+('1984', 'George Orwell', 1949, '9780451524935', true, ARRAY['fiction', 'dystopia'], '{"publisher": "Signet"}'),
+('Animal Farm', 'George Orwell', 1945, '9780451526342', false, ARRAY['satire'], '{"publisher": "Penguin"}'),
+('Brave New World', 'Aldous Huxley', 1932, '9780060850524', true, ARRAY['fiction'], '{"publisher": "Harper"}');
+
+-- Select all
+SELECT * FROM "books";
+-- Set range column
+UPDATE books SET year_range = int4range(year, year+5);
+
+-- 1. B-Tree Index
+CREATE INDEX idx_btree_year ON books (year);
+SELECT * FROM books WHERE year BETWEEN 1940 AND 1950;
+
+-- 2. Hash Index
+CREATE INDEX idx_hash_isbn ON books USING hash (isbn);
+SELECT * FROM books WHERE isbn = '9780451524935';
+
+-- 3. GIST Index
+CREATE INDEX idx_gist_year_range ON books USING gist (year_range);
+SELECT * FROM books WHERE year_range && int4range(1930, 1940);
+
+SELECT * FROM books WHERE year_range @> int4range(1945, 1950); 
+-- @> - contains          1949-1954  @>  1945-1950 -> false, 1945-1950 @> 1945-1950 -> true
+
+SELECT * FROM books WHERE year_range <@ int4range(1949, 1954);
+-- <@ - is contained by   1932-1937 <@  1949-1954 -> false,  1949-1954 @> 1949-1954 -> true
+
+
+-- 4. SP-GIST Index
+CREATE INDEX idx_spgist_title ON books USING spgist (title);
+SELECT * FROM books WHERE title LIKE 'Brave%';
+
+-- 5. GIN Index (Array)
+CREATE INDEX idx_gin_tags ON books USING gin (tags);
+SELECT * FROM books WHERE tags @> ARRAY['fiction'];
+
+-- 6. GIN Index on JSONB
+CREATE INDEX idx_gin_metadata ON books USING gin (metadata);
+SELECT * FROM books WHERE metadata @> '{"publisher": "Penguin"}';
+
+-- 7. BRIN Index
+CREATE INDEX idx_brin_year ON books USING brin (year);
+SELECT * FROM books WHERE year >= 1935 and year <= 1945;
+
+-- 8. Partial Index
+CREATE INDEX idx_partial_available ON books (title) WHERE available = true;
+SELECT * FROM books WHERE available = true AND title = '1984';
+
+-- 9. Unique Index
+CREATE UNIQUE INDEX idx_unique_isbn ON books (isbn);
+INSERT INTO books (title, author, year, isbn) VALUES ('New Book', 'Someone', 2020, '9780451524935');
+-- Fails because ISBN is not unique
+
+
