@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX and Fetch Example</title>
+</head>
+
+<body>
+
+    <!-- ///////////////////////////// AJAX ///////////////////////////// -->
+    <h2>AJAX - PostgreSQL Index (Auto Load)</h2>
+    <ul>
+        <li> A web page communicate with the server in the background without reloading the entire page.</li>
+        <li>
+            It uses:
+            <ol>
+                <li>Javascript</li>
+                <li>XMLHttpRequest Object</li>
+                <li>Optional data formats like JSON, XML, text, etc.</li>
+            </ol>
+        </li>
+    </ul>
+    <button onclick="getAjax()">click to GET</button>
+    <button onclick="postAjax()">click to POST</button>
+    <div id="ajaxOutput"></div>
+
+    <!-- //////////////////////////// Fetch //////////////////////////// -->
+    <h2>Fetch - PostgreSQL Index (Click to Load)</h2>
+    <ul>
+        <li>The fetch() method is used to send HTTP requests to the server without refreshing the page.</li>
+        <li>fetch() is a modern way to make HTTP requests (like GET, POST) in JavaScript.</li>
+        <li>It replaces the older XMLHttpRequest (XHR) method and is simpler, cleaner, and promise-based.</li>
+    </ul>
+    <h2>Why use fetch instead of AJAX</h2>
+    <ol>
+        <li>Fetch removes boilerplate code (like xhr.open, xhr.onload, xhr.send) and uses Promises.</li>
+        <li>Fetch returns promises. Handles success and errors like .then and .catch</li>
+        <li>Use modern async/await syntax.</li>
+    </ol>
+    <button onclick="postData()">click to POST</button>
+    <button onclick="loadData()">Click to Get data</button>
+    <div id="fetchOutput"></div>
+
+    <script>
+        ////////////////////////////////// AJAX /////////////////////////////////////
+        function getAjax(){
+        const startTime = Date.now();
+
+        console.log("GET AJAX Start Time: ", startTime);
+
+        // 1. Create XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+
+        // 2. Open connection (GET request)
+        xhr.open("GET", "Learnings/SQL/Postgresql_Index.txt", true);
+
+        // 3. Define what to do when response is received
+        xhr.onload = function () {
+            const endTime = Date.now();
+
+            console.log("GET AJAX End Time: ", endTime);
+
+            const timeTaken = endTime - startTime;
+
+            console.log("GET AJAX call time: ", timeTaken + " ms");
+
+            if (xhr.status === 200) {
+                document.getElementById("ajaxOutput").innerHTML =
+                    `<pre>${xhr.responseText}</pre>`;
+            } else {
+                document.getElementById("ajaxOutput").innerText = "AJAX Error: " + xhr.status;
+            }
+        };
+
+        // 4. Send the request
+        xhr.send();
+    }
+        ///////////////////////////////////  POST request using AJAX //////////////////////////////////////////
+        function postAjax() {
+
+        const postStartTime = Date.now();
+        console.log("POST AJAX Start Time: ", postStartTime);
+
+            // 1. Create XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // 2. Open connection - POST method
+            xhr.open("POST", "https://jsonplaceholder.typicode.com/posts", true);
+
+            // 3. Set header to send JSON data
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // 4. Handle response
+            xhr.onload = function () {
+                const postEndTIme = Date.now();
+                console.log("POST AJAX End Time: ", postEndTIme);
+                
+                const postTimeTaken = postEndTIme - postStartTime;
+                console.log("POST AJAX Time Taken: ", postTimeTaken  + " ms");
+
+                if (xhr.status === 201) { 
+                    console.log("Response:", JSON.parse(xhr.responseText));
+                } else {
+                    console.log("Error:", xhr.status);
+                }
+            };
+
+            // 5. Prepare data to send
+            var data = JSON.stringify({
+                title: "AJAX POST",
+                body: "This is a POST request using AJAX",
+                userId: 1
+            });
+
+            // 6. Send the request with data
+            xhr.send(data);
+        }
+
+
+        /////////////////////////////////// Fetch //////////////////////////////////////
+        function loadData() {
+
+            const fetchStartTime = performance.now();
+
+            console.log("Fetch Start Time: ", fetchStartTime);
+
+            // 1. Call fetch
+            fetch("Learnings/SQL/Postgresql_Index.txt")
+
+                // 2. Convert response to text
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status);
+                    }
+                    return response.text();
+                })
+
+                // 3. Work with data
+                .then(data => {
+
+                    const fetchEndTime = performance.now();
+
+                    console.log("Fetch End Time: ", fetchEndTime);
+
+                    const fetchTimeTaken = fetchEndTime - fetchStartTime;
+
+                    console.log("Fetch call time: ", fetchTimeTaken.toFixed(2) + " ms");
+
+                    document.getElementById("fetchOutput").innerHTML = `<pre>${data}</pre>`;
+
+                })
+
+                .catch(error => {
+                    document.getElementById("fetchOutput").innerText = "Fetch Error: " + error;
+                });
+        }
+
+        // POST request using fetch()
+        function postData() {
+            const postFetchStartTime = performance.now();
+            console.log("POST Fetch Start Time: ", postFetchStartTime);
+
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+
+                // adding method type
+                method: "POST",
+
+                // adding body to send
+                body: JSON.stringify({
+                    title: "POST request using fetch()",
+                    body: "Simple POST request using the fetch().",
+                    userId: 1
+                }),
+
+                // adding headers to request
+                headers: {
+                    "content-type": "application/json"
+                }
+            })
+
+                // converting to JSON format
+                .then(response => response.json())
+
+                // display result
+                .then(json => {
+                    const postFetchEndTime = performance.now();
+                    console.log("POST Fetch End Time: ", postFetchEndTime);
+
+                    const postFetchTimeTaken = performance.now();
+                    console.log("POST Fetch Time Taken: ", postFetchTimeTaken + " ms");
+                    console.log(json)});
+        }
+    </script>
+</body>
+
+</html>
