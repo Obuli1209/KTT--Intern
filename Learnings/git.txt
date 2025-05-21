@@ -1,0 +1,241 @@
+Git
+ - Git is a version control system (VCS).
+ - It is used to track changes on your code during software devlopment.
+ - It allows multiple developers to work on the same project at the same time without interfering with each other’s work.
+ - It was created by Linus Torvalds in 2005 (the same person who created Linux).
+ - Ex: Gpay
+
+Why Use Git?
+ - Track Changes: Keep a history of all code changes so you can go back to any previous state.
+ - Collaborate: Multiple developers can work on the same codebase without conflicts.
+ - Branching and Merging: Safely experiment with new features by creating branches and merging them later.
+ - Backup: Since it's distributed, every contributor has a full copy of the repository.
+ - Manage Versions: Easily manage releases, rollbacks, and patches.
+
+GitHub
+  - It is a web-based platform to host the code in cloud.
+
+What is a Repository in Git?
+ - A repository (or repo) in Git is a storage space where your project's files and their entire version history are stored.
+
+There are two types of repositories:
+ 1. Local repository - Exists on your computer.
+   Includes:
+        - Working directory – where you write/edit files.
+        - Staging area – where you prepare changes before committing.
+        - .git folder – where Git tracks the full history of the project.
+
+ 2. Remote Repository
+        - Hosted on platforms like GitHub, GitLab, Bitbucket, etc.
+        - Shared with other collaborators for team development.
+        - You push (upload) and pull (download) changes between your local and remote repos.
+
+what is .git?
+  - The .git folder is a hidden directory created when you run (git init).
+
+what is inside of .git?
+  - It contains all the internal data Git needs to manage version control, including:
+
+| Folder/File | Purpose                                                                        |
+| ----------- | ------------------------------------------------------------------------------ |
+| `config`    | Repository-specific settings (user info, remote URL, etc.)                     |
+| `HEAD`      | Points to the current branch you're working on                                 |
+| `objects/`  | Stores all your commits, files, and data in a compressed format                |
+| `refs/`     | Stores branch and tag references                                               |
+| `index`     | Tracks what’s staged (ready to be committed)                                   |
+| `logs/`     | Keeps a log of all changes to branches and HEAD                                |
+| `hooks/`    | Contains sample scripts that you can trigger on Git actions (e.g., pre-commit) |
+
+
+why is .git hidden?
+  - It's the heart of the repository.
+  - It's hidden to prevent accidental changes, as modifying it can corrupt your repository.
+  - Don't delete or edit the .git folder unless you're sure.
+  - If you delete it, the folder is no longer a Git repo.
+
+How to see it?
+  - On Windows (Git Bash): ls -a or enable hidden files in File Explorer.
+
+what is origin?
+  - Git automatically sets the remote name to origin.
+  - Repository link.
+
+ Can you rename origin?
+  - Yes. It's just a name. You can rename or create multiple remotes
+  - command: git remote rename origin new_name
+
+
+What is a Branch in Git?
+  - A branch in Git is like a separate line of development. 
+  - It allows you to work on features, bug fixes, or experiments without affecting the main project.
+
+Why use branches?
+  - Work on new features without breaking the main code
+  - Test ideas safely
+  - Collaborate without conflict
+  - Keep your main or master branch clean and stable
+  - Each branch is basically a pointer to a commit. When you make changes in one branch,
+  - other branches are not affected unless you merge them.
+
+
+////////////////////////////////////////////////////////// Git commands /////////////////////////////////////////////////////////////
+
+Create a local repository
+ - Open your terminal or Git Bash.
+ - Navigate to your project folder
+
+  command: git init
+
+
+Publishing a local repository to remote repository
+ - git remote add origin URL
+
+    - if new repository
+     - command: 
+          git add .
+          git commit -m "Initial commit"
+
+ - git branch -M main                  -- Renames the branch from 'master' to 'main'
+ - git push -u origin main             -- Pushes our local branch to the remote of the same name. Our remote name is origin.
+
+Cloning a repository
+ - git clone URL
+
+//////////// Branches /////////////
+create a new branch
+  - git branch new-branch-name        -- create branch 
+
+switch a branch 
+  - git checkout branch-name          -- switch branch
+
+create and switch a branch
+  - git checkout -b branch-name      -- checkout(it denote switch), -b(it denote create branch).
+  - git switch -c branch-name        -- switch, -c(create branch).
+
+List all branch 
+  - git branch
+
+List remote branches
+  - git branch -r
+
+List local branches
+  - git branch -a
+
+Delete a branch
+  - git -d branch-name               -- it shows error if not merged the branch
+  - git -D branch-name               -- it force to delete the branch( the code is backup before delete).
+
+
+Publishing a branch
+  - git push -u origin branch-name   -- publish the branch (-u denote do git push/git pull next time).
+
+Pruning branch
+  - It delete the remote references stored in local on your system.
+  - We can easily delete all of them in bulk using the --prune flag in our git fetch command.
+  - git fetch --prune                -- bulk delete.
+
+////////////commit //////////////////
+  - It records what changes you made to your files.
+  - Each commit has a unique ID (hash).
+  - Add messsage for commit.
+  
+It stores:
+  - The changes you made (added, modified, deleted files)
+  - A commit message describing the changes.
+
+command:
+  - git add filename                -- single file commit.
+  - git add .                       -- all file commit.
+  - git commit -m "Messages"        -- what changes on the file.
+
+Staging files
+  - which file change stages.
+  - git status                      -- check what file changes.
+
+Unstaging files
+  - restore the staged files.
+  - git restore (filename) or (.)   -- it restore last committed version.
+  - git restore --staged filename   -- single file restore from staging area.
+  - git resotre --staged .          -- all file restore form staging area.
+
+Ignoring files
+  - This is very important to stop yourself from committing useless log files.
+  - git ignore file-name            -- ignore this file never stage or commit this file.
+  - git ignore foldername/file-name.
+
+
+//////////////Git log///////////////////
+Git log
+  - A git log is where all your commits live. It's also called a commit history.
+  - shows a history of all commits in your current branch, starting from the most recent.
+command:
+  - git log                         -- show the last commit details like(commit-hashcode, author, date, message).
+  - git log filename                -- show parthicular file commit.
+  - git log --oneline               -- show each commit in single line.
+  - git log --graph --oneline       -- show commits in viusal tree format.
+  - git log -n 5                    -- show last 5 commits.
+
+HEAD
+  - HEAD usually points to a branch, which then points to a commit.
+  - git checkout main.
+
+Blame & diff -  to compare when and what was changed.
+Blame
+  - read the changed lines.
+  - git blame shows line-by-line who last modified each line of a file.
+  - git blame filename               -- show who, when, what changed.
+
+diff
+  - The git diff command compares two different commits and shows you the difference between its contents.
+  - git diff filename                 -- show diffreence in new and old lines.
+
+word-diff
+  - to highlight exactly what has been changed in edited lines.
+  - git word-diff filename
+
+fetch
+  - Downloads the latest changes from the remote repository
+  - but doesn’t apply them to your local branch.
+  - git fetch                         -- "Check what’s new on GitHub, but don’t touch my current work yet."
+
+pull
+  - Fetches + Merges remote changes into your current branch.
+  - "Get the latest updates from GitHub and apply them to my branch."
+
+push
+  - Sends your local commits to the remote repository.
+  - git push origin main.
+
+merge
+  - combines another branch into current branch.
+  - git merge branch-name.
+
+stash
+  - It you save your uncommitted changes temporarily so you can switch branches or do other tasks,
+  - without losing your work.
+  - git stash                                         -- saved in stash.
+
+Imagine you're working on a file, but suddenly need to:
+ - Pull the latest code
+ - Switch to another branch
+ - Fix a bug
+ - But your current changes aren’t ready to commit.
+ - Instead of losing them or committing half-done work, run: git stash
+
+- Your changes are saved
+- Your working directory becomes clean.
+
+Later, to get your changes back:
+ - git stash pop                                             -- restore work from stash list
+ - This restores your saved work and removes it from the stash list.
+
+
+rebase
+  - rebase is same as merge but history line is clean.
+  - git rebase.                                            -- merge the branch.
+
+
+
+
+
+
