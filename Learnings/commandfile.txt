@@ -114,11 +114,11 @@ Why OS is important?
 
 
 
-/////////////////How to install OS in Laptops/systems///////////////
+/////////////////How to install windows OS in Laptops/systems///////////////
 
 Step 1:
 Required components:
-   - USB(max 8GB)
+   - USB(min 8GB)
    - windows iso file for windows OS.
    - Laptops/PCs
 
@@ -145,3 +145,40 @@ Step 5:
    - Restart the System automatically.
    - After restarted, install the dependent drivers.
 
+
+//////////////////////////////Dual boot ////////////////////////////////////
+
+Step 1:
+   - Download Ubuntu ISO file in official website.
+   - Download Like Ubuntu Desktop
+
+Step 2:
+   - Create Bootable USB
+   - Open rufus platform and boot the USB.
+   - Boot selection: Ubuntu ISO
+   - Partition schema:  
+       - UEFI system -> choose GPT
+       - Legacy BIOS -> choose MBR
+   - check schema like Windows+R -> type msinfo32 -> Look BIOS mode.
+   - click start.
+
+Step 3:
+   - Windows+r -> select Disk Management.
+   - right click drive where to store OS -> click Shrink Volume.
+   - Shwrink atleast #)GB -> leave as unallocated space.
+   
+Step 4:
+   - Restart PC and press(esc or del or F2 or F10 or F12).
+   - Select USB
+   - choose Try or Install Ubuntu.
+
+Step 5:
+   - Double click to "Install Ubuntu"
+choose:
+   - Install Ubuntu alongside Windows Boot Manager
+   - or use "Something else" and create / root -> 20+GB
+   - Proceed with Installation -> select location, keyboard, user account.
+
+Step 6:
+   - After install -> remove USB.
+   - and restart the system.
