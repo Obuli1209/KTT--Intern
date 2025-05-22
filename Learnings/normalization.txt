@@ -1,0 +1,58 @@
+What is Normalization?
+  - Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity.
+  - It breaks the large tables into smaller tables and links them using keys.
+
+  Ex: (Aadhar card, PAN crad, Voter ID, Ration Card).
+
+why use normalization/
+  - Avoid data duplication
+  - Data consistency
+  - Easy to update, insert, delete.
+  - save storage.
+  - Improve query.
+
+Types of Normal Forms.
+
+1. 1NF(First Normal Form)
+    - Each column should contain only one row value
+    - Ex(wrong statement): John   Math, English
+       -> John    Math
+       -> John    English
+
+2. 2NF(Second Normal Form)
+    - It must be in 1NF.
+    - Make sure non-key data fully depends on the key.
+    - Ex: studentId   course  studentName
+        ->    1        Math     John
+    - studentName only depends on studentId not full key(studentId + course).
+    - So, split
+Student Table:
+studentId         StudentName
+    1                 John
+    2                 Smith
+
+course table:
+studentId             course
+     1                 Math
+     1                 English
+     2                 science
+
+3. 3NF(Third Normal Form)
+    - Must be in 2NF.
+    - No extra non-key columns depending on other non-key columns.
+    - Ex:  studentId       deptId         deptName
+        ->    1             D01            Computer science
+        ->    2             D02            physics
+    - deptName depends on deptId not on studentId.
+    - so split.
+student Table:
+studentId         deptId
+1                  D01
+2                  D02
+
+Dept Table:
+deptId            deptName
+D01                computer science
+D02                physics
+
+            
