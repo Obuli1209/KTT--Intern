@@ -1,0 +1,147 @@
+/////Basic Commands
+
+help - Shows list of available commands.
+cls  - Clears the screen.
+exit - Closes the Command Prompt window.
+cd   - change the current directory.
+ren  - rename a file.
+del  - delete a file.
+time - display or set time
+date - display or change date.
+copy - copy files.
+
+
+////File & Folder Operations
+
+dir	            - Lists files and directories.
+cd folder	    - Changes directory to folder.
+cd ..	            - Goes up one directory level.
+mkdir folder	    - Creates a new folder.
+rmdir folder	    - Deletes an empty folder.
+rmdir /s folder	    - Deletes folder and all contents.
+del file.txt	    - Deletes a file.
+copy a.txt b.txt    - Copies a.txt to b.txt.
+move a.txt folder\  - Moves file to another folder.
+ren old.txt new.txt - Renames a file.
+type file.txt	    - Displays content of a file.
+
+
+////File Creation/Editing
+
+echo Hello > file.txt	- Creates file with "Hello" as content.
+echo More >> file.txt	- Appends "More" to file.
+type nul > file.txt	- Creates an empty file.
+copy con file.txt	- Creates file and lets you type content.
+notepad file.txt	- Opens file in Notepad to edit.
+
+
+////Network Commands
+
+ipconfig	   - Shows IP and network info.
+ping google.com	   - Checks connection to a site.
+netstat	           - Shows open network connections.
+tracert google.com - Shows route to a website.
+net user           - Manage user accounts.
+netsh wlan show profiles - saved wi-fi network names.
+netsh wlan show profile name ="network name" key=clear  - show connected network details.
+
+
+
+////System Info & Tools
+
+systeminfo	  - Displays system details.
+hostname	  - Shows computer name.
+tasklist	  - Lists running processes.
+shutdown /s /t [sec] - shutdown the system
+shutdown /r /t [sec] - restart the system
+chkdsk [drive]:/f /r - check disk - scans and fixes disk errors.          - 
+sfc /scannow	  - Scans and repairs system files.
+
+
+////User Management
+
+net user	        - Lists user accounts.
+net user username /add	- Adds a new user.
+net localgroup administrators username /add	- Makes user an admin.
+
+
+
+
+////////////////////////////////////////////////////////////////////////////// Operating System //////////////////////////////////////////////////////////////////////////
+
+ What is OS?
+   - The operating system (OS) manages all of the software and hardware on the computer.
+   - It performs basic tasks such as file, memory and process management, handling input and output, and controlling peripheral devices such as disk drives and printers.
+   - It acts as an intermediary between the user and the hardware, coordinating tasks like memory management, process execution, and input/output operations. 
+   - It acts like a bridge between the user and the computer hardware.
+ 
+Functions of OS:
+   - UI
+   - Process Management(run apps)
+   - Memory Management(RAM)
+   - File system(CRUD for file/folder)
+   - Device Management(mouse, keyboard, printer)
+   - security(passwords)
+   - Multitasking(run multi programs)
+
+Types of OS:
+
+1.Desktop OS
+   - Windos, Linus, macOS
+   - Used for PCs, Laptops.
+
+2.Mobile OS
+   - Android, iOS
+   - Used for Smartphones, Tablets
+
+3.Server OS
+   - Ubuntu Server, Windows Server
+   - Used for Web servers,Data Centers.
+
+4.Embedded OS
+   - FreeRTOS, VxWorks
+   - Used for IoT, Smart TVs, ATMs
+
+5.Real-Time OS
+   - RTOS, QNX
+   - Used for Automotive, Robotics.
+
+Why OS is important?
+  - It starts the computer like booting.
+  - It install and run softwares.
+  - It manage all computer resources.
+  - It make easy ad secure for users.
+
+
+
+/////////////////How to install OS in Laptops/systems///////////////
+
+Step 1:
+Required components:
+   - USB(max 8GB)
+   - windows iso file for windows OS.
+   - Laptops/PCs
+
+Step 2:
+   - Install Windows ISO file in mobile view in official website.
+   - Format the USB(right click -> format -> 
+   - Now, boot the ISO file in USB using rufus platform.
+
+Step 3:
+   - After booting ISO file in USB.
+   - Connect with laptop and then power ON.
+   - it start with logo, click (esc or del or F2 or F10 or F12).
+   - It open boot menu and click.
+   - Select USB(UEFI) model.
+   - click Install Now.
+
+Step 4:
+   - After Installation.
+   - If product key is available provide.
+   - Provide the detials like langauge, date, time etc..
+   - Then provide the Username and password.
+
+Step 5:
+   - Restart the System automatically.
+   - After restarted, install the dependent drivers.
+
