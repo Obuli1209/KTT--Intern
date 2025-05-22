@@ -87,7 +87,7 @@ Functions of OS:
 Types of OS:
 
 1.Desktop OS
-   - Windos, Linus, macOS
+   - Windos, Linux, macOS
    - Used for PCs, Laptops.
 
 2.Mobile OS
