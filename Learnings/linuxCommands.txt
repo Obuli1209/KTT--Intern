@@ -1,0 +1,60 @@
+Linux cmd Commands:
+
+System Commands
+    - uname -a                  – Show all system information
+    - hostname                  – Show or set system hostname
+    - uptime 			– How long the system has been running
+    - top 			– Real-time system monitoring
+    - htop 			– Enhanced top (may need to install)
+    - free -h 			– Display free memory in human-readable form
+    - ps 			– List running processes
+    - ps aux 			– Show detailed running processes
+    - kill PID 			– Kill process by ID
+    - killall NAME 		– Kill process by name
+    - whoami 			– Show current user
+    - history 			– Show command history
+    - sudo CMD 			– Run command as superuser
+    - alias ll='ls -l' 		– Create an alias
+
+File and Directory Commands
+   - ls 			– List directory contents
+   - ls -l 			– Long listing format
+   - cd DIR 			– Change to directory DIR
+   - pwd 			– Print current working directory
+   - mkdir DIR 			– Create a directory
+   - rm FILE 			– Remove a file
+   - rm -r DIR	 		– Remove a directory recursively
+   - cp SRC DST			– Copy file or directory
+   - mv SRC DST 		– Move or rename file/directory
+   - touch FILE 		– Create an empty file
+   - cat FILE 			– Display file contents
+   - less FILE 			– View file one page at a time
+   - head FILE 			– Show first 10 lines of a file
+   - tail FILE 			– Show last 10 lines of a file
+   - nano FILE 			– Edit file with nano text editor
+   - vim FILE 			– Edit file with vim
+   - echo "text" > file.txt 	– Write/overwrite file
+   - echo "text" >> file.txt 	– Append to file
+   - cat > file.txt then Ctrl+D – Write multiple lines to a file
+   - grep PATTERN FILE 		– Search for a pattern in a file
+   - find PATH -name NAME 	– Find file or directory by name
+   - chmod MODE FILE 		– Change file permissions
+   - chown USER:GROUP FILE 	– Change file ownership
+
+Network Commands
+   - ping HOST 			– Test network connection
+   - ip a or ifconfig 		– Show network interfaces
+   - netstat -tuln 		– List open ports
+   - curl URL 			– Fetch URL content
+   - wget URL 			– Download file from URL
+
+Package Management (APT-based systems like Ubuntu)
+   - sudo apt update 		– Refresh package lists  
+   - sudo apt upgrade 		– Upgrade all installed packages
+   - sudo apt install PKG 	– Install package
+   - sudo apt remove PKG 	– Remove package
+
+Clipboard & Terminal Shortcuts
+   - xclip -selection clipboard – Copy to clipboard (needs xclip) 
+   - xclip -selection clipboard -o – Paste from clipboard
+   - Ctrl+Shift+C / Ctrl+Shift+V – Terminal copy/paste shortcuts
