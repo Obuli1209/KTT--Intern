@@ -1,0 +1,116 @@
+LEarned topics : https://docs.google.com/spreadsheets/d/16NI9xLtwIlEGqECX3GKZcpVnXBaFoxMdtYwNo6Zk-0Q/edit?usp=sharing
+
+What is RabbitMQ
+ - RabbitMQ is a message broker written in the Erlang programming language and 
+ built upon the Erlang Open Telecom Platform (OTP) framework.
+ - different systems communicate asynchronously by sending messages via queue.
+ - Protocol used AMQP(Advanced Message Queuing  Protocol).
+ - support other protocols(STOMP, MQTT)  via plugins.
+ - size of message is max default size is 128mb.
+ - queue size depends on memeory/disk availability.
+ - latest version 4.1.3
+ - net start RabbitMQ, net stop RabbitMQ.
+
+Why use rabbitMQ
+ - producer and consumer don't need to connect directly, they are independent.
+ - Message can be stored until they successfully received.
+ - Multiple consumers can work in parallel.
+ - Failed messages can be retried.
+
+Where used?
+ - Used in event-driven, asynchronous communication.
+ - E-commerce systems, Microservices, background jobs(image/video processing)'
+
+When  used
+ - reliable message delivery
+ - communicate indeirectly
+ - microservices
+
+Alternative for rabbitMQ
+ - Apache kafka, Amazon SQS, Active MQ
+
+Basic working process:
+ - Producer sends messages to exchange.
+ - The exchange use routing keys to deliver message to correct queue.
+ - A consumer subscribe queue and use Binding key and process the message.
+ - Once done, it sends the Acknowledgment to rabbitMQ.
+
+ Architecture of rabbitMQ:
+ - Producer -> Exchange -> Binding(rules) -> Queues -> Consumer
+ - Producer
+    - Producer send message to (rabbitMq)Exchange with a routing key not directly to Queue.
+ - Exchange
+    - Receive the message from producer and send to Queue based on rules.
+    Types:
+    - Direct: Routes messages with a specific routing key to queues that are bound with that key.
+    - Topic: Routes messages to queues based on wildcard-matching routing keys.
+    - Fanout: Broadcasts all messages to all bound queues, ignoring routing keys.    
+    - Headers: Uses message headers instead of routing keys.
+ - Queue
+    - Queue Recieve the message from exchange and buffer the message until a consumer receive them.
+    - Each queue bound to one or more exchanges.
+    - Messages are stored in FIFO order unless in retired or priortized.
+ - Bindings
+    - Bind multiple queues to exchange with different keys.
+
+Stream
+ - Stream means long list of messages.
+ - keep messages even after read.
+ - go back and read old messages.
+ - send messages in order.
+ - work fast handles lots of data.
+
+Channel
+ - Channel is a virtual connection.
+ - It inside a single connection between client and rabbitMQ broker.
+ - Open many channels in one connection.
+ - RabbitMQ allows 65535 channels per connection.
+Ex: TV have one cable connection and open multiple channels.
+
+Reliability and data safety
+ - Messages are not lost.
+ - Rabbitmq crashes or restarts won't delete the data.
+ - get delivery guarantes like messages delivered, retried, moved to new queue.
+EX: channel.queue_declare(queue='myqueue', durable=True)
+ - without durable = true, the queue disppear after a rabbitmq restart. 
+
+Plugin:
+ - add-on the extend features.
+ - add new features like UI, monitoring, protocol support.
+ various plugin like Management plugin, Promethus plugin, Federation plugin, MQTT plugin, STOMP plugin, Stream plugin, etc.
+
+
+Heartbetas:
+ - Heartbeats are small signals send to the clients and rabbitmq server.
+ - Every 60 seconds send signals to client.
+why use this
+ - It helps to rabbitmq detect dead or broken the client connections.
+ - EX: a client crashes, a network cable is pulled, firewall kills.
+
+
+Command line-interface(CLI):
+rabbitmqcql status - show basic details
+rabbitmq-diagnostics status - check status
+rabbitmqctl list_queues - List queues
+rabbitmq-plugins list - list all plugins
+rabbitmqctl list_users - list users.
+rabbitmqctl list_bindings - list Bindings
+rabbitmqctl add_user myuser mypassword - add_user
+rabbitmqctl delete_queue myqueue - delete queue
+rabbitmqctl change_password myuser newpass - change_password
+rabbitmq-plugins enable rabbitmq_management - enable plugin
+rabbitmq-plugins disable rabbitmq_management - disable plugin
+rabbitmq-diagnostics memory_breakdown - check memory usage
+rabbitmq-diagnostics listeners - show listeners
+rabbitmq-diagnostics - debug and check.
+
+RabbitMQ configuration:
+ - setting up the message broker's behavior and structure, including users, virtual hosts, queues, exchanges, and bindings. 
+ - It impacting the overall functionality and performance.
+
+
+Logging:
+ - RabbitMQ logs the files.
+ like what rabbitMQ doing, connection information, errors, authetication attempts.
+rabbit@<hostname>.log - Main events, startup, shutdown, warnings, errors.
+rabbit@<hostname>-sasl.log	  -  Authentication and connection logs
